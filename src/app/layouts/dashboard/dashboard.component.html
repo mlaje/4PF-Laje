@@ -1,0 +1,86 @@
+<mat-drawer-container class="dashboard-container" autosize>
+    <!-- SIDEBAR -->
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+      <mat-nav-list>
+        <a
+          #homeLink="routerLinkActive"
+          routerLinkActive
+          [activated]="homeLink.isActive"
+          routerLink="home"
+          mat-list-item
+          >Inicio</a
+        >
+
+        <!-- lo que está comentado también funciona y no permitiría ver el item de Usuarios 
+        <a *ngIf="rolActual =='ADMIN'" -->
+        <a 
+          #usersLink="routerLinkActive"
+          routerLinkActive
+          [activated]="usersLink.isActive"
+          routerLink="users"
+          mat-list-item
+          >Usuarios</a
+        >
+        <a
+          #studentsLink="routerLinkActive"
+          routerLinkActive
+          [activated]="studentsLink.isActive"
+          routerLink="students"
+          mat-list-item
+          >Estudiantes</a
+        >
+        <a
+          #coursesLink="routerLinkActive"
+          routerLinkActive
+          [activated]="coursesLink.isActive"
+          routerLink="courses"
+          mat-list-item
+          >Cursos</a
+        >
+
+        <a  (click)="logout()" mat-list-item>Cerrar sesión</a>
+      </mat-nav-list>
+      @if (showFiller) {
+        <p>Lorem, ipsum dolor sit amet consectetur.</p>
+      }
+       <!--
+      <button (click)="showFiller = !showFiller" mat-raised-button>
+        Toggle extra text
+      </button>
+      -->
+    </mat-drawer>
+    <!-- SIDEBAR -->
+
+    <!-- CONTENT -->
+    <div class="example-sidenav-content">
+
+        <!-- TOOLBAR -->
+        <mat-toolbar color="primary">
+            <button
+                (click)="drawer.toggle()"
+                mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+                <mat-icon>menu</mat-icon>
+            </button>
+
+            <span appSize>Sistema de Inscripciones</span>
+            
+            <span class="example-spacer"></span>
+            
+            <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+              <mat-icon>favorite</mat-icon>
+            </button>
+            
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+              <mat-icon>share</mat-icon>
+            </button>
+        </mat-toolbar>
+        <!-- TOOLBAR -->  
+       
+        <div class="p-5">
+          <router-outlet></router-outlet>
+        </div>
+    </div>
+    <!-- CONTENT -->
+  
+</mat-drawer-container>
+  

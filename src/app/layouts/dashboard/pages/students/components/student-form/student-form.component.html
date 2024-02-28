@@ -1,0 +1,148 @@
+<h1 mat-dialog-title> Estudiante</h1>
+
+ 
+<div mat-dialog-content>
+    <br>
+    <form [formGroup]="studentForm" class="grid formgrid">
+        <br>
+        <!-- First Name -->
+        <div class="col-6">
+            <mat-form-field class="w-full">
+                <mat-label>Nombre</mat-label>
+                <input formControlName="firstName" matInput type="text">
+            </mat-form-field>
+        </div>
+    
+        <!-- Last Name -->
+        <div class="col-6">
+            <mat-form-field class="w-full">
+                <mat-label>Apellido</mat-label>
+                <input formControlName="lastName" matInput type="text">
+            </mat-form-field>
+        </div>
+        
+        <!-- DNI -->
+        <div class="col-3">
+            <mat-form-field class="w-full">
+                <mat-label>DNI</mat-label>
+                <input formControlName="dni" matInput type="number">    
+            </mat-form-field> 
+        </div>
+
+        <!-- Fecha de Nacimiento -->    
+        <div class="col-3">
+            <mat-form-field class="w-full">
+                <mat-label>Fecha Nacimiento</mat-label>
+                    <input formControlName="birthDate" matInput [matDatepicker]="picker">
+                    <mat-hint>DD/MM/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <!--<input formControlName="birthDate"  matInput type="date"> -->             
+            </mat-form-field> 
+        </div>
+    
+        <!-- Email -->
+        <div class="col-3">
+            <mat-form-field class="w-full">
+                <mat-label>Email</mat-label>
+                <input formControlName="email" matInput type="email">
+                @if (this.studentForm.hasError('email') && !this.studentForm.hasError('required')) {
+                    <mat-error>Please enter a valid email address</mat-error>
+                }
+                @if (this.studentForm.hasError('required')) {
+                <mat-error>Email is <strong>required</strong></mat-error>
+                }            
+            </mat-form-field> 
+        </div>
+
+        <!-- Telefono -->
+        <div class="col-3">
+            <mat-form-field class="w-full">
+                <mat-label>Teléfono</mat-label>
+                <input formControlName="phone" matInput type="text">    
+            </mat-form-field> 
+        </div>
+
+        <!-- Género -->
+        <div class="col-3">
+            <mat-form-field class="w-full">
+                <mat-label>Género</mat-label>
+                <mat-select formControlName="gender">
+                    <mat-option *ngFor="let gender of genders" [value]="gender">{{ gender }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    
+        <!-- Dirección -->
+        <div class="col-3">
+            <mat-form-field class="w-full">
+                <mat-label>Direccion</mat-label>
+                <input formControlName="address" matInput type="text">    
+            </mat-form-field> 
+        </div>
+
+        <!-- Pais de Residencia -->
+        <div class="col-3">
+            <mat-form-field class="w-full">
+                <mat-label>Pais Residencia</mat-label>
+                <mat-select formControlName="residenceCountry">
+                    <mat-option *ngFor="let country of countries" [value]="country">{{ country }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    
+        <!-- Pais de Nacimiento -->
+        <div class="col-3">
+            <mat-form-field class="w-full">
+                <mat-label>Pais Nacimiento</mat-label>
+                <mat-select formControlName="bornCountry">
+                    <mat-option *ngFor="let country of countries" [value]="country">{{ country }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        
+        <!-- Trabaja -->
+        <div class="col-3">
+            <section class="example-section">
+                <mat-checkbox class="example-margin" formControlName="works">Trabaja</mat-checkbox>
+            </section>
+        </div>
+
+        <!-- Company Industry -->
+        <div class="col-3">
+            <mat-form-field class="w-full">
+                <mat-label>Industria</mat-label>
+                <mat-select formControlName="companyIndustry">
+                    <mat-option *ngFor="let industry of companyIndustries" [value]="industry">{{ industry }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <!-- jobDescription  -->
+        <div class="col-3">
+            <mat-form-field class="w-full">
+                <mat-label>Puesto</mat-label>
+                <mat-select formControlName="jobDescription">
+                    <mat-option *ngFor="let job of jobDescriptions" [value]="job">{{ job }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <!-- Botón Guardar  -->
+        
+    </form>    
+</div>
+<!--<pre> {{ studentForm.value | json }}</pre> -->
+<!-- Botones Cancelar y Guardar  -->
+<div mat-dialog-actions class="col-12 flex justify-content-end">
+    
+    <button mat-flat-button mat-dialog-close color="primary">
+        Cancelar 
+    </button>
+    
+    <button (click)="onSave()" mat-flat-button color="primary">
+        Guardar 
+    </button>
+
+</div>
+  

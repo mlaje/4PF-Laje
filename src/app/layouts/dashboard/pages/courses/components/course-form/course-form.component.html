@@ -1,0 +1,138 @@
+<h1 mat-dialog-title> Curso</h1>
+ 
+<div mat-dialog-content>
+    <br>
+    <!--<form [formGroup]="courseForm" (ngSubmit)="onSubmit()" class="grid formgrid"> -->
+        <form [formGroup]="courseForm" class="grid formgrid">
+        <!-- Nombre Curso -->
+        <div class="col-6">
+            <mat-form-field class="w-full">
+                <mat-label>Curso</mat-label>
+                <input formControlName="nombre" matInput type="text">
+            </mat-form-field>
+        </div>
+    
+        <!-- Carrera -->
+        <div class="col-3">
+            <mat-form-field class="w-full">
+                <mat-label>Carrera</mat-label>
+                <mat-select formControlName="carrera">
+                    <mat-option *ngFor="let carrera of carreras" [value]="carrera">{{ carrera }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    
+        <!-- Categoria -->
+        <div class="col-3">
+            <mat-form-field class="w-full">
+                <mat-label>Categoría</mat-label>
+                <mat-select formControlName="categoria">
+                    <mat-option *ngFor="let categoria of categorias" [value]="categoria">{{ categoria }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <!-- Nivel -->
+        <div class="col-3">
+            <mat-form-field class="w-full">
+                <mat-label>Nivel</mat-label>
+                <mat-select formControlName="nivel">
+                    <mat-option *ngFor="let nivel of niveles" [value]="nivel">{{ nivel }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <!-- Dedicacion -->
+        <div class="col-3">
+            <mat-form-field class="w-full">
+                <mat-label>Dedicación</mat-label>
+                <mat-select formControlName="dedicacion">
+                    <mat-option *ngFor="let dedicacion of dedicaciones" [value]="dedicacion">{{ dedicacion }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+
+        <!-- Precio De Lista -->
+        <div class="col-3">
+            <mat-form-field class="w-full">
+                <mat-label>Precio De Lista</mat-label>
+                <input formControlName="precioDeLista" matInput type="number">    
+            </mat-form-field> 
+        </div>
+
+        <!-- Descuento -->
+        <div class="col-3">
+            <mat-form-field class="w-full">
+                <mat-label>Descuento</mat-label>
+                <input formControlName="descuento" matInput type="number">    
+            </mat-form-field> 
+        </div>
+
+
+        <!-- Precio Final -->
+        <div class="col-3">
+            <mat-form-field class="w-full">
+                <mat-label>Precio Final</mat-label>
+                <input formControlName="precioFinal" matInput type="number">    
+            </mat-form-field> 
+        </div>
+
+
+        <!-- Detalles -->
+        <div class="col-3">
+            <mat-form-field class="w-full">
+                <mat-label>Detalles</mat-label>
+                <input formControlName="detalles" matInput type="text">    
+            </mat-form-field> 
+        </div>
+
+        <!--Rango de Fechas  -->
+        <div class="col-3">
+            <mat-form-field class="w-full">
+                <mat-label>Rango de Fechas</mat-label>
+                <input formControlName="rangoDeFechas" matInput type="text">    
+            </mat-form-field> 
+        </div>
+        
+        <!--Dias  -->
+        <div class="col-3">
+            <mat-form-field class="w-full">
+                <mat-label>Dias</mat-label>
+                <input formControlName="dias" matInput type="text">    
+            </mat-form-field> 
+        </div>
+
+
+        <!-- Horario  -->
+        <div class="col-3">
+            <mat-form-field class="w-full">
+                <mat-label>Horario</mat-label>
+                <input formControlName="horario" matInput type="text">    
+            </mat-form-field> 
+        </div>
+
+        <!-- Profesor  -->
+        <div class="col-3">
+            <mat-form-field class="w-full">
+                <mat-label>Profesor</mat-label>
+                <input formControlName="profesor" matInput type="text">    
+            </mat-form-field> 
+        </div>
+       
+    </form>    
+</div>
+
+<!-- Botones Cancelar y Guardar  -->
+<div mat-dialog-actions class="col-12 flex justify-content-end">
+    
+    <button mat-flat-button mat-dialog-close color="primary">
+        Cancelar 
+    </button>
+    
+    <button (click)="onSave()" mat-flat-button color="primary">
+        Guardar 
+    </button>
+
+</div>
+  

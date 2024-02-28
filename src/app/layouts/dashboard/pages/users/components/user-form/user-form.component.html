@@ -1,0 +1,83 @@
+<h1 mat-dialog-title> Usuario</h1>
+
+ 
+<div mat-dialog-content>
+    <br>
+    <!--<form [formGroup]="courseForm" (ngSubmit)="onSubmit()" class="grid formgrid"> -->
+    <form [formGroup]="userForm" class="grid formgrid">
+
+        <!-- First Name -->
+        <div class="col-6">
+            <mat-form-field class="w-full">
+                <mat-label>Nombre</mat-label>
+                <input formControlName="firstName" matInput type="text">
+            </mat-form-field>
+        </div>
+    
+        <!-- Last Name -->
+        <div class="col-6">
+            <mat-form-field class="w-full">
+                <mat-label>Apellido</mat-label>
+                <input formControlName="lastName" matInput type="text">
+            </mat-form-field>
+        </div>    
+
+        <!-- User Name -->
+        <div class="col-3">
+            <mat-form-field class="w-full">
+                <mat-label>Username</mat-label>
+                <input formControlName="userName" matInput type="string">    
+            </mat-form-field> 
+        </div>
+    
+        <!-- Email -->
+        <div class="col-3">
+            <mat-form-field class="w-full">
+                <mat-label>Email</mat-label>
+                <input formControlName="email" matInput type="email">
+                @if (this.userForm.hasError('email') && !this.userForm.hasError('required')) {
+                    <mat-error>Please enter a valid email address</mat-error>
+                }
+                @if (this.userForm.hasError('required')) {
+                <mat-error>Email is <strong>required</strong></mat-error>
+                }            
+            </mat-form-field> 
+        </div>
+
+        <!-- Password -->
+        <div class="col-3">
+            <mat-form-field class="w-full">
+                <mat-label>Password</mat-label>
+                <input formControlName="password" matInput type="password">    
+            </mat-form-field> 
+        </div>
+
+        <!-- Role -->
+        <div class="col-3">
+            <mat-form-field class="w-full">
+                <mat-label>Rol</mat-label>
+                <mat-select formControlName="role">
+                    <mat-option *ngFor="let role of roles" [value]="role">{{ role }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        
+    </form>    
+</div>
+
+
+
+<!-- Botones Cancelar y Guardar  -->
+<div mat-dialog-actions class="col-12 flex justify-content-end">
+    
+    <button mat-flat-button mat-dialog-close color="primary">
+        Cancelar 
+    </button>
+    
+    <button (click)="onSave()" mat-flat-button color="primary">
+        Guardar 
+    </button>
+
+</div>
+    

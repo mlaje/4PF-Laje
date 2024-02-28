@@ -1,0 +1,151 @@
+<!-- <div class="mb-3">
+    <app-course-form (userSubmitted)="onCourseSubmitted($event)"></app-course-form>
+  </div> -->
+<h1> Cursos </h1>
+
+<div class="col-12 flex justify-content-end">
+    <button (click)="onCreate()" mat-flat-button color="primary">
+         Agregar 
+    </button>
+</div>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- ng container no se le puede dar estilo, es como un div que no tiene representación grafica--> 
+
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+    <!-- HEADER -->  
+    <th mat-header-cell *matHeaderCellDef appSize> Id </th>                     <!-- appSize: directiva personalizada-->
+    <!-- CELDA -->  
+    <td mat-cell *matCellDef="let course"> {{ course.id }} </td>
+    </ng-container>
+
+    <!-- Nombre Column -->
+    <ng-container matColumnDef="nombre">
+    <!-- HEADER -->  
+    <th mat-header-cell *matHeaderCellDef appSize> Nombre </th>                     <!-- appSize: directiva personalizada-->
+    <!-- CELDA -->  
+    <td mat-cell *matCellDef="let course"> {{ course.nombre }} </td>
+    </ng-container>
+   
+    <!-- carrera Column -->
+    <ng-container matColumnDef="carrera">
+    <!-- HEADER -->  
+    <th mat-header-cell *matHeaderCellDef appSize> Carrera </th>
+    <!-- CELDA -->  
+    <td mat-cell *matCellDef="let course"> {{course.carrera}} </td>
+    </ng-container>
+
+    <!-- categoria Column -->
+    <ng-container matColumnDef="categoria">
+    <!-- HEADER -->  
+    <th mat-header-cell *matHeaderCellDef appSize> Categoría </th>
+    <!-- CELDA -->  
+    <td mat-cell *matCellDef="let course"> {{course.categoria}} </td>
+    </ng-container>
+
+    <!-- nivel Column -->
+    <ng-container matColumnDef="nivel">
+    <!-- HEADER -->  
+    <th mat-header-cell *matHeaderCellDef appSize> Nivel </th>
+    <!-- CELDA -->  
+    <td mat-cell *matCellDef="let course"> {{course.nivel}} </td>
+    </ng-container>
+    
+    <!-- dedicacion Column -->
+    <ng-container matColumnDef="dedicacion">
+        <!-- HEADER -->  
+        <th mat-header-cell *matHeaderCellDef appSize> Dedicación </th>
+        <!-- CELDA -->  
+        <td mat-cell *matCellDef="let course"> {{course.dedicacion}} </td>
+    </ng-container>
+        
+
+    <!-- precioDeLista Column -->
+    <ng-container matColumnDef="precioDeLista">
+        <!-- HEADER -->  
+        <th mat-header-cell *matHeaderCellDef appSize> Precio </th>
+        <!-- CELDA -->  
+        <td mat-cell *matCellDef="let course"> {{course.precioDeLista}} </td>
+    </ng-container>
+        
+
+    <!-- descuento Column -->
+    <ng-container matColumnDef="descuento">
+        <!-- HEADER -->  
+        <th mat-header-cell *matHeaderCellDef appSize> Descuento </th>
+        <!-- CELDA -->  
+        <td mat-cell *matCellDef="let course"> {{course.descuento}} </td>
+    </ng-container>
+        
+    <!-- precioFinal Column -->
+    <ng-container matColumnDef="precioFinal">
+        <!-- HEADER -->  
+        <th mat-header-cell *matHeaderCellDef appSize> Precio Final </th>
+        <!-- CELDA -->  
+        <td mat-cell *matCellDef="let course"> {{course.precioFinal}} </td>
+    </ng-container>
+
+    <!-- detalles Column -->
+    <ng-container matColumnDef="detalles">
+    <!-- HEADER -->  
+    <th mat-header-cell *matHeaderCellDef appSize> Detalles </th>
+    <!-- CELDA -->  
+    <td mat-cell *matCellDef="let course"> {{course.detalles}} </td>
+    </ng-container>
+
+    <!-- rango de fechas Column -->
+    <ng-container matColumnDef="rangoDeFechas">
+    <!-- HEADER -->  
+    <th mat-header-cell *matHeaderCellDef appSize>Fechas </th>
+    <!-- CELDA -->  
+    <td mat-cell *matCellDef="let course"> {{course.rangoDeFechas}} </td>
+    </ng-container>
+
+    <!-- dias Column -->
+    <ng-container matColumnDef="dias">
+    <!-- HEADER -->  
+    <th mat-header-cell *matHeaderCellDef appSize> Dias </th>
+    <!-- CELDA -->  
+    <td mat-cell *matCellDef="let course"> {{course.dias}} </td>
+    </ng-container>
+
+    <!-- horario Column -->
+    <ng-container matColumnDef="horario">
+    <!-- HEADER -->  
+    <th mat-header-cell *matHeaderCellDef appSize> Horario </th>
+    <!-- CELDA -->  
+    <td mat-cell *matCellDef="let course"> {{course.horario}} </td>
+    </ng-container>
+    
+    <!-- Profesor Column -->
+    <ng-container matColumnDef="profesor">
+    <!-- HEADER -->  
+    <th mat-header-cell *matHeaderCellDef appSize> Profesor </th>
+    <!-- CELDA -->  
+    <td mat-cell *matCellDef="let course"> {{course.profesor}} </td>
+    </ng-container>
+            
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+        <!-- HEADER -->  
+        <th mat-header-cell *matHeaderCellDef appSize> Acciones </th>
+        <!-- CELDA -->  
+        <td mat-cell *matCellDef="let course"> 
+            <!-- <button [routerLink]="course.id" color="accent" mat-icon-button>
+                <mat-icon>visibility</mat-icon>
+            </button>  -->      
+            <button (click) = "onDeleteCourse(course)" mat-icon-button color="warn"> 
+                <mat-icon> delete </mat-icon>
+            </button> 
+            <button (click) ="onEdit(course)" color="primary" mat-icon-button>
+                <mat-icon>edit</mat-icon>
+            </button> 
+        </td>
+      </ng-container>
+
+<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+

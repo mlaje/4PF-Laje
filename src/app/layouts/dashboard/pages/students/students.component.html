@@ -1,0 +1,165 @@
+<!--<div class="mb-3">
+  <app-student-form (userSubmitted)="onUserSubmitted($event)"></app-student-form>
+</div>
+--> 
+<h1> Estudiantes </h1>
+
+<div class="col-12 flex justify-content-end">
+    <button (click)="onCreate()" mat-flat-button color="primary">
+         Agregar 
+    </button>
+</div>
+
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- ng container no se le puede dar estilo, es como un div que no tiene representación grafica--> 
+
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <!-- HEADER -->  
+      <th mat-header-cell *matHeaderCellDef appSize> Id </th>                     <!-- appSize: directiva personalizada-->
+      <!-- CELDA -->  
+      <td mat-cell *matCellDef="let student"> {{ student.id }} </td>
+    </ng-container>
+  
+    <!-- fullName Column -->
+    <ng-container matColumnDef="fullName">
+        <!-- HEADER -->  
+        <th  mat-header-cell *matHeaderCellDef appSize> Nombre </th>
+        <!-- CELDA -->  
+        
+        <!-- Antes: Sin CUSTOM PIPES -->  
+        <!-- <td mat-cell *matCellDef="let student"> 
+                {{ student.firstName + ' ' + student.lastName}} 
+        </td> -->
+
+        <!-- Ahora: Con Custom Pipe fullName: Apellido, Nombre -->  
+        <td mat-cell *matCellDef="let student"> 
+          {{ {firstName: student.firstName, lastName: student.lastName} | fullName }}   <!-- Uso Pipe fullName -->
+        </td>
+    
+      </ng-container>
+  
+    <!-- DNI Column -->
+    <ng-container matColumnDef="dni">
+      <!-- HEADER -->  
+      <th mat-header-cell *matHeaderCellDef appSize> DNI </th>
+      <!-- CELDA -->  
+      <td mat-cell *matCellDef="let student"> {{student.dni}} </td>
+    </ng-container>
+  
+    <!-- birthDate Column -->
+    <ng-container matColumnDef="birthDate">
+      <!-- HEADER -->  
+      <th mat-header-cell *matHeaderCellDef appSize> Nacimiento </th>
+      <!-- CELDA -->  
+      <td mat-cell *matCellDef="let student"> 
+        {{ (student.birthDate | date :"dd/MM/yyyy")  }}            <!-- Uso Pipe date con formato -->
+      </td>
+    </ng-container>
+
+    <!-- Edad -->
+    <ng-container matColumnDef="edad">
+      <!-- HEADER -->  
+      <th mat-header-cell *matHeaderCellDef appSize> Edad </th>
+      <!-- CELDA -->  
+      <td mat-cell *matCellDef="let student"> 
+        {{ student.birthDate | edad }}  
+      </td>                                                         <!-- Uso Pipe edad -->
+    </ng-container>
+
+    <!-- email Column -->
+    <ng-container matColumnDef="email">
+      <!-- HEADER -->  
+      <th mat-header-cell *matHeaderCellDef appSize> Email </th>
+      <!-- CELDA -->  
+      <td mat-cell *matCellDef="let student"> {{student.email}} </td>
+    </ng-container>
+
+    <!-- phone Column -->
+    <ng-container matColumnDef="phone">
+      <!-- HEADER -->  
+      <th mat-header-cell *matHeaderCellDef appSize> Teléfono </th>
+      <!-- CELDA -->  
+      <td mat-cell *matCellDef="let student"> {{student.phone}} </td>
+    </ng-container>
+
+    <!-- gender Column -->
+    <ng-container matColumnDef="gender">
+      <!-- HEADER -->  
+      <th mat-header-cell *matHeaderCellDef appSize> Género </th>
+      <!-- CELDA -->  
+      <td mat-cell *matCellDef="let student"> {{student.gender}} </td>
+    </ng-container>
+
+    <!-- address Column -->
+    <ng-container matColumnDef="address">
+      <!-- HEADER -->  
+      <th mat-header-cell *matHeaderCellDef appSize> Dirección </th>
+      <!-- CELDA -->  
+      <td mat-cell *matCellDef="let student"> {{student.address}} </td>
+    </ng-container>
+
+    <!-- residenceCountry Column -->
+    <ng-container matColumnDef="residenceCountry">
+      <!-- HEADER -->  
+      <th mat-header-cell *matHeaderCellDef appSize>Residencia </th>
+      <!-- CELDA -->  
+      <td mat-cell *matCellDef="let student"> {{student.residenceCountry}} </td>
+    </ng-container>
+    
+    <!-- bornCountry Column -->
+    <ng-container matColumnDef="bornCountry">
+      <!-- HEADER -->  
+      <th mat-header-cell *matHeaderCellDef appSize>Nacimiento </th>
+      <!-- CELDA -->  
+      <td mat-cell *matCellDef="let student"> {{student.bornCountry}} </td>
+    </ng-container>
+
+    <!-- Trabaja Column -->
+    <ng-container matColumnDef="works">
+      <!-- HEADER -->  
+      <th mat-header-cell *matHeaderCellDef appSize> Trabaja </th>
+      <!-- CELDA -->  
+      <td mat-cell *matCellDef="let student"> {{ (student.works ? 'Si' : 'No') }} </td>
+    </ng-container>
+
+    <!-- companyIndustry Column -->
+    <ng-container matColumnDef="companyIndustry">
+      <!-- HEADER -->  
+      <th mat-header-cell *matHeaderCellDef appSize> Industria </th>
+      <!-- CELDA -->  
+      <td mat-cell *matCellDef="let student"> {{student.companyIndustry}} </td>
+    </ng-container>    
+
+    <!-- jobDescription Column -->
+    <ng-container matColumnDef="jobDescription">
+      <!-- HEADER -->  
+      <th mat-header-cell *matHeaderCellDef appSize> Puesto </th>
+      <!-- CELDA -->  
+      <td mat-cell *matCellDef="let student"> {{student.jobDescription}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="actions">
+      <!-- HEADER -->  
+      <th mat-header-cell *matHeaderCellDef appSize> Acciones </th>
+      <!-- CELDA -->  
+      <td mat-cell *matCellDef="let student"> 
+          <!-- <button [routerLink]="course.id" color="accent" mat-icon-button>
+              <mat-icon>visibility</mat-icon>
+          </button>  -->      
+          <button (click) = "onDeleteStudent(student)" mat-icon-button color="warn"> 
+              <mat-icon> delete </mat-icon>
+          </button> 
+          <button (click) ="onEdit(student)" color="primary" mat-icon-button>
+              <mat-icon>edit</mat-icon>
+          </button> 
+      </td>
+    </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+  

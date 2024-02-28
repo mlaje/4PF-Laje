@@ -1,0 +1,160 @@
+{
+  "courses": [
+    {
+      "id": "1",
+      "nombre": "Angular",
+      "carrera": "Programación y Desarrollo",
+      "categoria": "Programación y Desarrollo",
+      "nivel": "Avanzado",
+      "dedicacion": "Moderada",
+      "precioDeLista": 90000,
+      "descuento": 22,
+      "precioFinal": 74000,
+      "detalles": "Se requieren conocimientos de HTML, CSS y Javascript",
+      "rangoDeFechas": "Del 08/09 al 02/11",
+      "dias": "Lunes y Miercoles",
+      "horario": "20 hs a 22 hs",
+      "profesor": "Josué Baez"
+    },
+    {
+      "id": "2",
+      "nombre": "Power BI Avanzado",
+      "carrera": "Data",
+      "categoria": "Data",
+      "nivel": "Avanzado",
+      "dedicacion": "Moderada",
+      "precioDeLista": 80000,
+      "descuento": 15,
+      "precioFinal": 68000,
+      "detalles": "Se requieren conocimientos de SQL",
+      "rangoDeFechas": "Del 01/03 al 03/05",
+      "dias": "Martes y Viernes",
+      "horario": "19 a 21 hs",
+      "profesor": "José Datiten"
+    },
+    {
+      "id": "3",
+      "nombre": "Magia",
+      "carrera": "Producto",
+      "categoria": "Data",
+      "nivel": "Intermedio",
+      "dedicacion": "Alta",
+      "precioDeLista": 100000,
+      "descuento": 20,
+      "precioFinal": 80000,
+      "detalles": "No Se requieren conocimientos previos",
+      "rangoDeFechas": "Del 02/02 al 05/05",
+      "dias": "Lunes y Jueves",
+      "horario": "20:30 a 22:30 hs",
+      "profesor": "Sofía Loren"
+    },
+    {
+      "id": "365a",
+      "nombre": "Computación Grafica",
+      "carrera": "Diseño UX/UI",
+      "categoria": "Diseño UX/UI",
+      "nivel": "Avanzado",
+      "dedicacion": "Alta",
+      "precioDeLista": 3333333,
+      "descuento": 33,
+      "precioFinal": 3333000,
+      "detalles": "detalles",
+      "rangoDeFechas": "02/08 al 11/09",
+      "dias": "Lu y Mi",
+      "horario": "200 hs - 22 hs",
+      "profesor": "Claudio"
+    }
+  ],
+  "students": [
+    {
+      "id": "1",
+      "firstName": "Marcelo",
+      "lastName": "Laje",
+      "dni": 222222222,
+      "birthDate": "1970-01-17T00:00:00.000Z",
+      "email": "cualquier.mail@gmail.com",
+      "phone": "54 911 3683-5510",
+      "gender": "Masculino",
+      "address": "Bragado 4111",
+      "residenceCountry": "Argentina",
+      "bornCountry": "Argentina",
+      "works": true,
+      "companyIndustry": "Desarrollo Web",
+      "jobDescription": "Analista"
+    },
+    {
+      "id": "2",
+      "firstName": "Valentina",
+      "lastName": "Laje",
+      "dni": 44444444,
+      "birthDate": "2013-01-17T00:00:00.000Z",
+      "email": "otro.mail@gmail.com",
+      "phone": "54 911 3683-5510",
+      "gender": "Femenino",
+      "address": "Bragado 4999",
+      "residenceCountry": "Argentina",
+      "bornCountry": "Argentina",
+      "works": false,
+      "companyIndustry": "",
+      "jobDescription": ""
+    },
+    {
+      "id": "3",
+      "firstName": "Liliana",
+      "lastName": "Ibarra",
+      "dni": 933333333,
+      "birthDate": "1975-01-17T00:00:00.000Z",
+      "email": "lili.mail@gmail.com",
+      "phone": "54 911 3683-5510",
+      "gender": "Femenino",
+      "address": "Bragado 4666",
+      "residenceCountry": "Argentina",
+      "bornCountry": "Paraguay",
+      "works": true,
+      "companyIndustry": "Textil",
+      "jobDescription": "Socio"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "userName": "cremita",
+      "firstName": "Pepe",
+      "lastName": "Cuenca",
+      "email": "pepe.cuenca@gmail.com",
+      "password": "bombazo",
+      "role": "USER",
+      "token": "1234567890"
+    },
+    {
+      "id": "2",
+      "userName": "chucky",
+      "firstName": "Vassily",
+      "lastName": "Ivanchuk",
+      "email": "satoshi@gmail.com",
+      "password": "bitcoin",
+      "role": "ADMIN",
+      "token": "AFDASFDASDFS9798"
+    },
+    {
+      "id": "3",
+      "userName": "flancito",
+      "firstName": "Marcelo",
+      "lastName": "Laje",
+      "email": "marcelo.laje@gmail.com",
+      "password": "flancito",
+      "role": "ADMIN",
+      "token": "66554455223399"
+    },
+    {
+      "id": "4",
+      "userName": "flancitaaaa",
+      "firstName": "Valentina",
+      "lastName": "Laje",
+      "email": "valentina.laje@gmail.com",
+      "password": "nikita",
+      "role": "USER",
+      "token": "6566161688844"
+    }
+  ]
+}

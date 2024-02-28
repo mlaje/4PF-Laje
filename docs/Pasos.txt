@@ -1,0 +1,701 @@
+Repositorio GitHub
+https://github.com/mlaje/1PF-Laje.git
+
+
+Pasos Generación del proyecto de la primera entrega
+
+- Crear Proyecto
+> ng new 1PF-Laje --no-standalone
+Stylesheet format: SCSS
+SSR: No
+
+- Abrir el código con VS Code
+> cd 1PF-Laje
+> code .
+
+
+- Instalar Angular Material
+> ng add @angular/material
+(17.1.0)
+Theme: Custom
+Angular Material typography styles: Yes
+Include and enable animations: Yes
+
+
+- Probar aplicación base
+> ng serve -o
+Tal como está no funciona => editar styles.scss (quitando las ocurrencias del string dentro del archivo "1PF-Laje-")
+Ahora sí funciona
+Vaciar archivo app.component.html
+
+
+- Desarrollar Layout Administrativo
+ 
+Crear carpeta src/app/layouts
+Crear carpeta src/app/layouts/auth
+Crear carpeta src/app/layouts/dashboard
+Crear carpeta docs con archivo Pasos.txt donde se encuentra este archivo
+
+agregar docs/modules.drawio 
+agregar docs/structure.drawio
+
+- Generar módulo dashboard dentro de la carpeta layouts/dashboard/
+> ng g module layouts/dashboard
+
+- Generar módulo auth dentro de la carpeta layouts/auth/
+> ng g module layouts/auth
+
+- Generar dashboard component
+> ng g component layouts/dashboard
+
+- Quitar archivo dashboard.component.spec.ts
+
+
+- Importar el DashboardModule para usar el DashboardComponent en el el app.component.html
+    
+    dashboard.module.ts:
+        exports: [
+            DashboardComponent
+        ]
+
+    app.module.ts:
+        import { DashboardModule } from './layouts/dashboard/dashboard.module';
+
+        imports: [
+            ...
+            DashboardModule ]
+
+    Si queremos utilizar un componente DashboardComponent fuera su módulo, por ejemplo en el app.component.html,
+    hay que importar el módulo DashboardModule (en el archivo app.module.ts) y exportar el DashboardComponent
+    (desde el archivo DashboardModule)
+
+    El app.module.ts importa el DashboardModule, y este módulo a su vez exporta el DashboardComponent
+
+- agregar sidenav de angular material (dentro del dashboard component)
+    En DashboardModule:
+    import {MatSidenavModule} from '@angular/material/sidenav'; 
+
+    imports: [
+        .., MatSidenavModule ]
+
+    en DashboardComponent.html:
+
+        agregar código HTML de ejemplo de angular material sidenav
+
+    en DashboardComponent.ts
+        agregar el showFiller = false
+
+        export class DashboardComponent {
+            showFiller = false;
+        }
+
+    En dashboard.component.scss poner estilos
+
+- agregar button de angular material (dentro del dashboard component)
+    En DashboardModule:
+    import {MatButtonModule} from '@angular/material/button'; 
+
+    imports: [
+        .., MatButtonModule ]
+
+    
+- agregar toolbar de angular material (dentro del dashboard component)
+    En DashboardModule:
+     import {MatToolbarModule} from '@angular/material/toolbar'; 
+
+    imports: [
+        .., MatToolbarModule ]
+
+    en DashboardComponent.html:
+
+        agregar código HTML dentro del div class="dashboard-sidenav-content"
+
+   
+- El toolbar no funciona si no se agregan el mat-Icon (se agrega). Se agrega el mat-icon
+    En DashboardModule:
+    import {MatIconModule} from '@angular/material/icon'; 
+
+     imports: [
+        .., MatIconModule ]
+
+    Cada vez que se quiere usar un componente, se debe importar el modulo que lo contiene
+
+- Sacar el boton de Toggle sidenav (para que lo haga el icono de menu del toolbar)
+
+- Generar modulos (Students, Users, Courses, Enrollment, etc...) (IMPORTANTE: para esta entrega solo el de Students)
+> ng g module layouts/dashboard/pages/students
+
+- Generar componente Students
+> ng g component layouts/dashboard/pages/students --skip-tests 
+
+- Exportar el StudentsComponent en el Students.module.ts:
+    ...
+    exports: [
+        StudentsComponent
+    ],
+
+ - En el DashboardModule importar el StudentsModule
+    import { StudentsModule } from './pages/students/students.module';
+
+    imports: [ ..
+        StudentsModule]
+
+- Cargar listas en variables string[] en students.component.ts, que van a ser utilizadas en combos (paises, rubros, generos, etc) 
+
+- agregar el componente de students <app-students></app-students> en dashboard.component.html
+
+- agregar Table de angular material (dentro del students component)
+    En StudentsModule:
+    import {MatTableModule} from '@angular/material/table'; 
+    
+    imports: [
+    ...
+    MatTableModule]
+
+- Editar el students.component.html con una tabla de angular material de ejemplo
+
+- Instalar PrimeFlex
+    > npm install primeFlex
+
+- Editar angular.json 
+    agregar en "styles" :
+          "node_modules/primeflex/primeflex.min.css",  
+
+- Crear directorios models y components dentro de directorio Students 
+
+- Definir dentro de la carpeta models el index.ts
+
+    export interface Student {
+        ...
+    }
+
+- En students.component.ts poner el estudiantes de ejemplo en dataSource y displayedcolumns (que vienen en el html de arriba referenciados)
+    import { Student } from './models';
+
+    displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+    dataSource: Student[] = ...;
+
+- Editar el StudentsComponent html con las columnas de la tabla de alumnos
+
+- generar component student-form en layouts/dashboard/pages/students/components/
+> ng g component layouts/dashboard/pages/students/components/student-form --skip-tests
+
+- En students.module.ts
+
+    import { MatFormFieldModule } from '@angular/material/form-field'; // input wrapper
+    import { MatInputModule } from '@angular/material/input'; // input
+    import {MatSelectModule} from '@angular/material/select'; // select
+    import {MatButtonModule} from '@angular/material/button'; // button
+
+    imports : [
+        ...,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatButtonModule
+    ];
+     
+- agregar al student-form.component.ts
+    export class StudentFormComponent {
+    userForm: FormGroup ; 
+
+    constructor(private fb: FormBuilder) {
+        this.userForm = this.fb.group(
+        {
+            firstName: this.fb.control(''), ....
+
+
+- Para trabajar con los formularios de angular, importar en Students.module.ts el ReactiveFormsModule 
+    import { ReactiveFormsModule } from '@angular/forms';
+    imports: [
+        ...
+        ReactiveFormsModule]
+
+- vincular el typescript con el html. En student-form.component.html  
+    agregar el formGroup y vincularla con la variable userForm
+    agregar los formControlName  
+
+- En student-form.component.ts agregar el onSubmit()
+
+- agregar en StudentFormComponent.html (ngSubmit)="onSubmit()"
+
+- Cuando hacemos Guardar, queremos pushear el valor del formulario student-form (hijo) a la tabla de students.form (padre)
+
+- En student-form.component agregar:
+    import { ... , EventEmitter, Output} from '@angular/core';
+
+    @Output() 
+    userSubmitted = new EventEmitter();
+
+- agregar en el padre (student component.ts)
+    onUserSubmitted(ev: Student): void {
+        //this.dataSource.push(ev); //no anda porque angular material necesita que se recree el array
+     this.dataSource = [...this.dataSource,  {...ev, id: new Date().getTime()}];
+    }
+
+- en StudentFormComponent 
+    <div class="mb-3">
+        <app-student-form (userSubmitted)="onUserSubmitted($event)"></app-student-form>
+    </div>
+
+- editar los colores de la paleta 
+
+- agregar pipe date en el campo birthdate del archivo sudents.component.html
+    {{student.birthDate | date:"..formato.."}} 
+
+- editar el app.module.ts con el imports del LOCALE_ID:
+    import { registerLocaleData } from '@angular/common';
+    import es from '@angular/common/locales/es';
+    registerLocaleData(es);
+
+    providers: [
+        {
+        provide: LOCALE_ID ,
+        useValue: 'es-AR'
+        }
+    ]
+
+- Agregar atributo phone del alumno (form, interfaz, tabla, campos desplegados, etc)
+
+- Hacer custom pipe 
+    > ng g module layouts/dashboard/pages/pipes
+    > ng g component layouts/dashboard/pages/pipes --skip-tests
+    > ng g module shared 
+    > ng g pipe shared/full-name
+   
+    Importar el     PipesModule en el DashboardModule
+ 
+    En el PipesModule exportar el PipesComponent
+
+     exports : [  
+        PipesComponent
+        ]
+
+
+- En pipes.module.ts
+
+    import { SharedModule } from '../../../../shared/shared.module';
+
+    imports: [
+        ...
+        SharedModule]
+
+- pipe edad (descartada por el momento, falta que la fecha cargada sea un date cuando se agrega)
+> ng g pipe shared/edad     
+
+- directivas personalizadas
+> ng g d shared/size --skip-tests
+
+*************
+Segunda parte
+*************
+
+- Generar modulos Users
+> ng g module layouts/dashboard/pages/users
+
+- Generar componente Users
+> ng g component layouts/dashboard/pages/users --skip-tests 
+
+
+- Exportar el UsersComponent en el Users.module.ts:
+    ...
+    exports: [
+        UsersComponent
+    ],
+
+ - En el DashboardModule importar el UsersModule
+    import { UsersModule } from './pages/users/users.module';
+
+    imports: [ ..
+        UsersModule]
+
+
+- Cargar listas en variables string[] en users.component.ts, que van a ser utilizadas en combos (role, etc) 
+
+- Definir dentro de la carpeta users/models el user.ts
+
+    export interface User {
+        ...
+    }
+
+- agregar el componente de users <app-users></app-users> en dashboard.component.html
+
+- En Users.component.ts poner el estudiantes de ejemplo en dataSource y displayedcolumns (que vienen en el html de arriba referenciados)
+    import { User } from './models';
+
+    displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+    dataSource: User[] = ...;
+
+- Editar el UsersComponent html con las columnas de la tabla de alumnos
+
+
+- generar component User-form en layouts/dashboard/pages/Users/components/
+> ng g component layouts/dashboard/pages/Users/components/User-form --skip-tests
+
+
+- En Users.module.ts
+
+    import { MatFormFieldModule } from '@angular/material/form-field'; // input wrapper
+    import { MatInputModule } from '@angular/material/input'; // input
+    import {MatSelectModule} from '@angular/material/select'; // select
+    import {MatButtonModule} from '@angular/material/button'; // button
+
+    imports : [
+        ...,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatButtonModule
+    ];
+     
+- agregar al User-form.component.ts
+    export class UserFormComponent {
+    userForm: FormGroup ; 
+
+    constructor(private fb: FormBuilder) {
+        this.userForm = this.fb.group(
+        {
+            firstName: this.fb.control(''), ....
+
+
+- Para trabajar con los formularios de angular, importar en Users.module.ts el ReactiveFormsModule 
+    import { ReactiveFormsModule } from '@angular/forms';
+    imports: [
+        ...
+        ReactiveFormsModule]
+
+- vincular el typescript con el html. En User-form.component.html  
+    agregar el formGroup y vincularla con la variable userForm
+    agregar los formControlName  
+
+- En User-form.component.ts agregar el onSubmit()
+
+- agregar en UserFormComponent.html (ngSubmit)="onSubmit()"
+
+- Cuando hacemos Guardar, queremos pushear el valor del formulario User-form (hijo) a la tabla de Users.form (padre)
+
+- En User-form.component agregar:
+    import { ... , EventEmitter, Output} from '@angular/core';
+
+    @Output() 
+    userSubmitted = new EventEmitter();
+
+- agregar en el padre (User component.ts)
+    onUserSubmitted(ev: User): void {
+        //this.dataSource.push(ev); //no anda porque angular material necesita que se recree el array
+     this.dataSource = [...this.dataSource,  {...ev, id: new Date().getTime()}];
+    }
+
+- en UserFormComponent 
+    <div class="mb-3">
+        <app-User-form (userSubmitted)="onUserSubmitted($event)"></app-User-form>
+    </div>
+
+
+Agregar cursos
+
+- Generar modulos Courses
+> ng g module layouts/dashboard/pages/courses
+
+- Generar componente Courses
+> ng g component layouts/dashboard/pages/courses --skip-tests 
+
+
+- Exportar el CoursesComponent en el courses.module.ts:
+    ...
+    exports: [
+        CoursesComponent
+    ],
+
+ - En el DashboardModule importar el CoursesModule
+    import { CoursesModule } from './pages/courses/courses.module';
+
+    imports: [ ..
+        CoursesModule]
+
+
+- Cargar listas en variables string[] en courses.component.ts, que van a ser utilizadas en combos (role, etc) 
+
+- Definir dentro de la carpeta courses/models el course.ts
+
+    export interface Course {
+        ...
+    }
+
+- agregar el componente de Courses <app-Courses></app-Courses> en dashboard.component.html
+
+- En Courses.component.ts poner el estudiantes de ejemplo en dataSource y displayedcolumns (que vienen en el html de arriba referenciados)
+    import { Course } from './models/course';
+
+    displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+    dataSource: Course[] = ...;
+
+- Editar el CoursesComponent html con las columnas de la tabla de alumnos
+
+
+- generar component Course-form en layouts/dashboard/pages/Courses/components/
+> ng g component layouts/dashboard/pages/Courses/components/course-form --skip-tests
+
+
+- En Courses.module.ts
+
+    import { MatFormFieldModule } from '@angular/material/form-field'; // input wrapper
+    import { MatInputModule } from '@angular/material/input'; // input
+    import {MatSelectModule} from '@angular/material/select'; // select
+    import {MatButtonModule} from '@angular/material/button'; // button
+
+    imports : [
+        ...,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatButtonModule
+    ];
+     
+- agregar al Course-form.component.ts
+    export class CourseFormComponent {
+    CourseForm: FormGroup ; 
+
+    constructor(private fb: FormBuilder) {
+        this.CourseForm = this.fb.group(
+        {
+            firstName: this.fb.control(''), ....
+
+
+- Para trabajar con los formularios de angular, importar en Courses.module.ts el ReactiveFormsModule 
+    import { ReactiveFormsModule } from '@angular/forms';
+    imports: [
+        ...
+        ReactiveFormsModule]
+
+- vincular el typescript con el html. En Course-form.component.html  
+    agregar el formGroup y vincularla con la variable CourseForm
+    agregar los formControlName  
+
+- En Course-form.component.ts agregar el onSubmit()
+
+- agregar en CourseFormComponent.html (ngSubmit)="onSubmit()"
+
+- Cuando hacemos Guardar, queremos pushear el valor del formulario Course-form (hijo) a la tabla de Courses.form (padre)
+
+- En Course-form.component agregar:
+    import { ... , EventEmitter, Output} from '@angular/core';
+
+    @Output() 
+    CourseSubmitted = new EventEmitter();
+
+- agregar en el padre (Course component.ts)
+    onCourseSubmitted(ev: Course): void {
+        //this.dataSource.push(ev); //no anda porque angular material necesita que se recree el array
+     this.dataSource = [...this.dataSource,  {...ev, id: new Date().getTime()}];
+    }
+
+- en CourseFormComponent 
+    <div class="mb-3">
+        <app-Course-form (CourseSubmitted)="onCourseSubmitted($event)"></app-Course-form>
+    </div>
+
+agregar listas de categorias, dedicacion, nivel, carrera, etc de cursos
+
+
+- Servicio de usuarios
+ng generate service core/services/users --skip-tests 
+
+- en users.module.ts agregar
+    //providers: [UsersService]
+    providers: [
+        {
+        provide: UsersService,
+        useClass: UsersService
+        }  
+    ]
+
+- en app.module.ts
+  import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';  
+
+    providers : [ ...
+     {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: {
+        appearance: 'outline',
+      },
+    }
+
+- comentar el dataSource del users.component.ts ( se va a levantar del user.service)
+    -- dataSource: User[] ...
+    roles: string[] = [];
+    dataSource: User[] = [];
+
+
+- npm install sweetalert2
+
+- ng generate service core/services/loading 
+
+        import { Injectable } from '@angular/core';
+        import { BehaviorSubject, Observable, Subject } from 'rxjs';
+
+        @Injectable({
+        providedIn: 'root'
+        })
+        export class LoadingService {
+        private loadingTriggered$ = new BehaviorSubject<boolean>(false);
+
+        public isLoading$ = this.loadingTriggered$.asObservable();
+
+        setIsLoading(value: boolean): void {
+            this.loadingTriggered$.next(value);
+        }
+        constructor() { }
+        }
+
+
+- ng generate service core/services/alerts 
+
+
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
+import Swal, { SweetAlertOptions } from 'sweetalert2';
+
+@Injectable({ providedIn: 'root' })
+export class AlertsService {
+  private notification$ = new Subject<SweetAlertOptions>();
+
+  constructor() {
+    this.notification$.subscribe({
+      next: (options) => {
+        Swal.fire(options);
+      },
+    });
+  }
+
+  showAlert(options: SweetAlertOptions): void {
+    this.notification$.next(options);
+  }
+
+  showSuccess(title: string, message: string): void {
+    this.notification$.next({
+      icon: 'success',
+      title,
+      text: message,
+    });
+  }
+
+  showError(message?: string): void {
+    this.notification$.next({
+      icon: 'error',
+      title: 'Error!',
+      text: message,
+    });
+  }
+}
+
+ng generate service core/services/students --skip-tests 
+
+ng generate service core/services/courses --skip-tests  
+
+
+Login
+
+- ng generate component layouts/auth/pages/login --skip-tests
+
+
+- En el app-routing.module.ts
+const routes: Routes = [
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+  },
+  {
+    path: 'auth/login',
+    component: LoginComponent,
+  }
+
+- Importar el RouterModule en el DashboardModule
+
+- ng generate module layouts/dashboard/pages/home
+
+- ng generate component layouts/dashboard/pages/home --skip-tests
+
+- ng generate module layouts/not-found
+
+- ng generate component layouts/not-found
+
+User detail (misma idea con Student, Course, etc)
+- ng generate component layouts/dashboard/pages/users/pages/user-detail --skip-tests
+- ng generate component layouts/dashboard/pages/students/pages/student-detail --skip-tests  
+- ng generate component layouts/dashboard/pages/courses/pages/course-detail --skip-tests  
+
+- ng g m core
+
+Crear archivo courses-routing.module.ts (forChild)
+src/app/layouts/dashboard/pages/courses/courses-routing.module.ts
+
+Mudar los datos de los componentes a los servicios e implementar lazy loading
+
+Refactorings varios
+
+Separar el formulario de carga de la tabla de cada entidad modelada (User, Student, Course)
+
+
+Tercera entrega
+- crear auth-routing.module.ts
+
+- llenar login.component.scss
+
+- ng generate pipe shared/validation-errors --skip-tests
+
+- ng generate guard core/guards/auth
+
+- ng generate service core/services/auth --skip-tests  
+
+- ng generate guard core/guards/admin --skip-tests  
+
+- Guardar la sesion del usuario que hizo login
+
+- npm install json-server -g
+
+- json-server --version
+
+- crear db.json
+
+- mover los datos de los servicios al db.json
+
+
+
+
+- importar el HttpClientModule al app.module
+    Reemplazar las llamadas para que usen la API
+
+- crear carpeta environments y dos archivos de environment y editar el angular.json
+
+    "configurations": {
+                "production": {
+                "fileReplacements": [
+                    {
+                    "replace": "src/environments/environment.ts",
+                    "with": "src/environments/environment.prod.ts"
+                    }
+
+- "defaultConfiguration": "production"
+
+- ng build vs ng build -c development
+
+- agregar llamadas a las API en cursos y students 
+    Luego de editar el db.json hacer:
+    - json-server db.json --watch
+
+    Endpoints generados:
+    http://localhost:3000/courses
+    http://localhost:3000/students
+    http://localhost:3000/users
+
+- Servidor de prueba: ng test (corre los tests)
+
+- crear tests
+
+- usar ng mock
+    npm install ng-mocks --save-dev 
+
+- Crear courses.service.spec.ts y definir el unit testing del servicio de cursos
+
+- Crear courses.component.spec.ts y definir el unit testing del servicio de cursos

@@ -18,10 +18,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title '3PF-Laje'`, () => {
+  it(`should have as title '4PF-Laje'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('3PF-Laje');
+    expect(app.title).toEqual('4PF-Laje');
   });
 });
 */

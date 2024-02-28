@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = '3PF-Laje';
+  title = '4PF-Laje';
 
   
   isLoading = false;

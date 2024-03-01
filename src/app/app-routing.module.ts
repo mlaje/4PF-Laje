@@ -44,6 +44,15 @@ const routes: Routes = [
         //component: CoursesComponent   
       },
       { 
+        // /dashboard/inscripciones
+        path: 'inscripciones',
+        loadChildren: () => 
+                      import('./layouts/dashboard/pages/inscripciones/inscripciones.module').then(
+                            (m) => m.InscripcionesModule)   // LAZY LOADING
+        //component: InscripcionesComponent   
+      },
+      
+      { 
         path: '**',
         redirectTo: 'home'
       },

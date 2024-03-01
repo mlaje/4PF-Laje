@@ -727,3 +727,30 @@ CUARTA entrega
     Agregar variable   authUser$: Observable<User | null>;
 
     No se usa mas rolActual
+
+Feature Store
+- ng add @ngrx/schematics
+
+- Definir las inscripciones (generar modulo y componente)
+
+    - ng g m layouts/dashboard/pages/inscripciones --routing
+    - ng g c layouts/dashboard/pages/inscripciones --skip-tests
+
+- Editar inscripciones-routing.module y el app.routing.module
+
+- Agregar menú de inscripciones
+
+- ng g feature layouts/dashboard/pages/inscripciones/store/inscripciones --skip-tests
+? Should we generate and wire success and failure actions? Yes
+? What should be the prefix of the action, effect and reducer? load
+? Should we use @ngrx/entity to create the reducer? No
+? To which module (path) should the effect be registered in? layouts/dashboard/pages/inscripciones/inscripciones.module.ts
+
+- ng add @ngrx/effects@latest
+
+- Agregar en el imports de inscripciones.module.ts
+    StoreModule.forFeature(inscripcionesFeature),
+
+- Generamos en el db.json inscripciones (   "id": ..,
+      "studentId": ..,
+      "courseId": ..)

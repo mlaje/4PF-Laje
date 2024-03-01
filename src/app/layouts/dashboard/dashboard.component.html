@@ -38,12 +38,12 @@
           >Cursos</a
         >
         <a
-        #inscripcionesLink="routerLinkActive"
+        #inscriptionsLink="routerLinkActive"
         routerLinkActive
-        [activated]="inscripcionesLink.isActive"
-        routerLink="inscripciones"
+        [activated]="inscriptionsLink.isActive"
+        routerLink="inscriptions"
         mat-list-item
-        >Inscripciones</a>
+        >Inscriptions</a>
         <a  (click)="logout()" mat-list-item>Cerrar sesión</a>
       </mat-nav-list>
       @if (showFiller) {

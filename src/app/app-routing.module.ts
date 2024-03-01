@@ -44,12 +44,12 @@ const routes: Routes = [
         //component: CoursesComponent   
       },
       { 
-        // /dashboard/inscripciones
-        path: 'inscripciones',
+        // /dashboard/inscriptions
+        path: 'inscriptions',
         loadChildren: () => 
-                      import('./layouts/dashboard/pages/inscripciones/inscripciones.module').then(
-                            (m) => m.InscripcionesModule)   // LAZY LOADING
-        //component: InscripcionesComponent   
+                      import('./layouts/dashboard/pages/inscriptions/inscriptions.module').then(
+                            (m) => m.InscriptionsModule)   // LAZY LOADING
+        //component: InscriptionsComponent   
       },
       
       { 

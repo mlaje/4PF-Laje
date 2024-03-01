@@ -699,3 +699,31 @@ Tercera entrega
 - Crear courses.service.spec.ts y definir el unit testing del servicio de cursos
 
 - Crear courses.component.spec.ts y definir el unit testing del servicio de cursos
+
+
+CUARTA entrega
+- ng add @ngrx/store
+
+- ng add @ngrx/store-devtools@latest
+
+- crear carpeta store 
+
+- dentro de store, crear carpeta auth
+   y subcarpetas actions, reducers y selectores
+
+- crear archivo store/auth/index.ts 
+
+- Editar app.module.ts con StoreModule.forRoot(appReducers, {}),
+
+- Editar auth.service.ts
+    agregar el store en el constructor
+    setAuthUser: disparar la accion con el dispatch
+
+- Editar el DashboardComponent
+    En el constructor:
+        agrear el store como parametro 
+        this.authUser$ = this.store.select(selectAuthUser);
+
+    Agregar variable   authUser$: Observable<User | null>;
+
+    No se usa mas rolActual

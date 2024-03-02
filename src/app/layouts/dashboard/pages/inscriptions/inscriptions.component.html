@@ -1,1 +1,10 @@
-<pre> {{ inscriptions$ | async | json }} </pre>
+<div *ngIf="isLoading$ | async; else notLoading">
+    Cargando
+</div>
+
+<ng-template #notLoading>
+    <button (click)="createInscription()" mat-flat-button type="button" color="primary">
+        Inscribir
+    </button>
+    <pre> {{ inscriptions$ | async | json }} </pre>
+</ng-template>

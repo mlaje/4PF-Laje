@@ -157,26 +157,41 @@
       "token": "6566161688844"
     }
   ],
-  "inscriptions" : [
+  "inscriptions": [
     {
-      "id": 1,
+      "id": "1",
       "studentId": "1",
       "courseId": "1"
     },
     {
-      "id": 2,
+      "id": "2",
       "studentId": "2",
       "courseId": "2"
     },
     {
-      "id": 3,
+      "id": "3",
       "studentId": "1",
       "courseId": "2"
     },
     {
-      "id": 4,
+      "id": "4",
       "studentId": "2",
       "courseId": "1"
+    },
+    {
+      "id": "2f0f",
+      "courseId": "1",
+      "studentId": "1"
+    },
+    {
+      "id": "08c9",
+      "courseId": "1",
+      "studentId": "2"
+    },
+    {
+      "id": "9301",
+      "courseId": "365a",
+      "studentId": "1"
     }
   ]
 }

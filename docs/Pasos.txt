@@ -759,3 +759,8 @@ Feature Store
     ng generate service core/services/inscriptions --skip-tests
 
 - editar verifyToken    
+
+- Editar efectos, selectores, acciones, reducers, servicio y demas referido a inscriptions
+
+- crear un dialog para la creación de las inscripciones
+    ng g c layouts/dashboard/pages/inscriptions/components/inscription-dialog

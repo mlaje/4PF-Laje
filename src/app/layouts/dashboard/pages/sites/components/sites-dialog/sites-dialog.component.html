@@ -1,1 +1,64 @@
-<p>sites-dialog works!</p>
+<h1 mat-dialog-title> Sede </h1>
+
+ 
+<div mat-dialog-content>
+    <br>
+    <form [formGroup]="siteForm" class="grid formgrid">
+        <br>
+        <!-- nombre -->
+        <div class="col-3">
+            <mat-form-field class="w-full">
+                <mat-label>Nombre</mat-label>
+                <input formControlName="nombre" matInput type="text">
+            </mat-form-field>
+        </div>
+    
+        <!-- calle -->
+        <div class="col-3">
+            <mat-form-field class="w-full">
+                <mat-label>Calle</mat-label>
+                <input formControlName="calle" matInput type="text">
+            </mat-form-field>
+        </div>
+        
+        <!-- altura -->
+        <div class="col-3">
+            <mat-form-field class="w-full">
+                <mat-label>Altura</mat-label>
+                <input formControlName="altura" matInput type="number">    
+            </mat-form-field> 
+        </div>
+
+        <!-- codigo Postal -->
+        <div class="col-3">
+            <mat-form-field class="w-full">
+                <mat-label>Código Postal</mat-label>
+                <input formControlName="codigoPostal" matInput type="text">    
+            </mat-form-field> 
+        </div>
+    
+        <!-- Aulas -->
+        <div class="col-3">
+            <mat-form-field class="w-full">
+                <mat-label>Aulas</mat-label>
+                <input formControlName="aulas" matInput type="text">    
+            </mat-form-field> 
+        </div>
+        <!-- Botón Guardar  -->
+        
+    </form>    
+</div>
+
+<!-- Botones Cancelar y Guardar  -->
+<div mat-dialog-actions class="col-12 flex justify-content-end">
+    
+    <button mat-flat-button mat-dialog-close color="primary">
+        Cancelar 
+    </button>
+    
+    <button (click)="onSubmit()" mat-flat-button color="primary">
+        Guardar 
+    </button>
+
+</div>
+  

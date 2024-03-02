@@ -767,8 +767,7 @@ Feature Store
 
 
 
-- Uso Patron Redux para Sedes (Fisicas) donde dictar cursos
-
+Uso Patron Redux (NgRx) para Sedes (Fisicas) donde dictar cursos
 
 
 - Definir las Sedes (generar modulo y componente)

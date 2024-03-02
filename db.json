@@ -209,7 +209,6 @@
       "studentId": "3"
     }
   ],
-
   "sites": [
     {
       "id": "1",
@@ -266,6 +265,22 @@
       "altura": "12000",
       "codigoPostal": "1414",
       "aulas": "14"
+    },
+    {
+      "id": "e27d",
+      "nombre": "Lugano",
+      "calle": "Escalada",
+      "altura": 1200,
+      "codigoPostal": "1425",
+      "aulas": "22"
+    },
+    {
+      "id": "6281",
+      "nombre": "fasfsfdsd",
+      "calle": "asdfasdf",
+      "altura": 333,
+      "codigoPostal": "a33",
+      "aulas": "33"
     }
   ]
 }

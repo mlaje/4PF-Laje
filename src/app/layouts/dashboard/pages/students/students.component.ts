@@ -2,9 +2,12 @@ import { Component , EventEmitter, Output} from '@angular/core';
 import { Student } from './models';
 import { StudentsService } from '../../../../core/services/students.service';
 import { LoadingService } from '../../../../core/services/loading.service';
-import { forkJoin } from 'rxjs';
+import { Observable, forkJoin } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { StudentFormComponent } from './components/student-form/student-form.component';
+import { User } from '../users/models/user';
+import { Store } from '@ngrx/store';
+import { selectAuthUser } from '../../../../core/store/auth/selectors';
 
 @Component({
   selector: 'app-students',
@@ -18,12 +21,17 @@ export class StudentsComponent {
 
 
   dataSource: Student[] = [];
-  
+  authUser$: Observable<User | null>;
+
   constructor (private studentsService: StudentsService,
                private loadingService: LoadingService,
-               public dialog: MatDialog) {
+               public dialog: MatDialog, 
+              private store: Store) {
+
+              this.authUser$ = this.store.select(selectAuthUser); 
   } 
 
+  
   ngOnInit():void {
     this.getPageData();
   }

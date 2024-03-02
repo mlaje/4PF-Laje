@@ -2,9 +2,12 @@ import { Component , EventEmitter, OnInit, Output} from '@angular/core';
 import { Course } from './models/course';
 import { CoursesService } from '../../../../core/services/courses.service';
 import { LoadingService } from '../../../../core/services/loading.service';
-import { forkJoin } from 'rxjs';
+import { Observable, forkJoin } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { CourseFormComponent } from './components/course-form/course-form.component';
+import { Store } from '@ngrx/store';
+import { User } from '../users/models/user';
+import { selectAuthUser } from '../../../../core/store/auth/selectors';
 
 @Component({
   selector: 'app-courses',
@@ -17,11 +20,16 @@ export class CoursesComponent implements OnInit {
 
   dataSource: Course[] = [];
   roles: string[] = [];
+
+  authUser$: Observable<User | null>;
   
   constructor (private coursesService: CoursesService,
               private loadingService: LoadingService,
-              public dialog: MatDialog) {
-} 
+              public dialog: MatDialog, 
+              private store: Store) {
+
+              this.authUser$ = this.store.select(selectAuthUser); 
+  } 
  
 ngOnInit():void {
   this.getPageData();

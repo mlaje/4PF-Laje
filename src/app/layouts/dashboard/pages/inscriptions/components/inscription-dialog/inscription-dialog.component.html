@@ -1,26 +1,45 @@
-<h1 mat-dialog-title>Crear Inscripción</h1>
-<div mat-dialog-content>
-  <form [formGroup]="inscriptionForm">
-    <mat-form-field>
-      <mat-label>Estudiante</mat-label>
-      <mat-select formControlName="studentId">
-        <mat-option [value]="student.id" *ngFor="let student of students$ | async">
-          {{ student.firstName }} {{ student.lastName }} 
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Curso</mat-label>
-      <mat-select formControlName="courseId">
-        <mat-option [value]="course.id" *ngFor="let course of courses$ | async">
-          {{ course.nombre }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </form>
+<div class=".inscription-container">
+<div mat-dialog-content >
+ 
+  <mat-card>
+
+    <mat-card-header>
+      <mat-card-title>
+          <h1 style="font-size: 1.5rem">Crear Inscripción</h1>
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="inscriptionForm" class="grid formgrid">
+        <mat-form-field class="w-full">
+            <mat-label>
+                Estudiante
+            </mat-label>
+            <mat-select formControlName="studentId">
+              <mat-option [value]="student.id" *ngFor="let student of students$ | async">
+                {{ student.firstName }} {{ student.lastName }} 
+              </mat-option>
+            </mat-select>
+            <mat-error>
+                {{ inscriptionForm.get("studentId")?.errors | validationErrors }}
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Curso</mat-label>
+          <mat-select formControlName="courseId">
+            <mat-option [value]="course.id" *ngFor="let course of courses$ | async">
+              {{ course.nombre }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        </form>
+    </mat-card-content>  
+  </mat-card>
 </div>
 <div mat-dialog-actions class="col-12 flex justify-content-end">
   <button mat-flat-button mat-dialog-close color="primary">Cancelar</button>
   <button mat-flat-button (click)="onSubmit()" color="primary">Guardar</button>
 </div>
-
+</div>

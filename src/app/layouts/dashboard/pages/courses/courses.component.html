@@ -136,10 +136,10 @@
             <!-- <button [routerLink]="course.id" color="accent" mat-icon-button>
                 <mat-icon>visibility</mat-icon>
             </button>  -->      
-            <button (click) = "onDeleteCourse(course)" mat-icon-button color="warn"> 
+            <button  (click) = "onDeleteCourse(course)" mat-icon-button color="warn" *ngIf="(authUser$ | async)?.role === 'ADMIN'"> 
                 <mat-icon> delete </mat-icon>
             </button> 
-            <button (click) ="onEdit(course)" color="primary" mat-icon-button>
+            <button (click) ="onEdit(course)" color="primary" mat-icon-button *ngIf="(authUser$ | async)?.role === 'ADMIN'">
                 <mat-icon>edit</mat-icon>
             </button> 
         </td>

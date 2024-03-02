@@ -37,7 +37,9 @@ export class InscriptionDialogComponent {
   }  
 
   onSubmit(): void {
-    if (this.inscriptionForm.invalid) {
+    if (this.inscriptionForm.invalid ||  
+        !this.inscriptionForm.get('studentId')?.value || 
+        !this.inscriptionForm.get('courseId')?.value ) {
       this.inscriptionForm.markAllAsTouched();
     } else {
       this.store.dispatch(

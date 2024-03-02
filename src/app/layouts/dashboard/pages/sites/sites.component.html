@@ -6,9 +6,12 @@
 </div>
 
 <ng-template #notLoading>
-    <button (click)="createSite()" mat-flat-button type="button" color="primary">
-        Agregar
-    </button>
+    <div class="col-12 flex justify-content-end">
+        <button (click)="createSite()" mat-flat-button type="button" color="primary">
+            Agregar
+        </button>
+    </div>
+
 </ng-template>
 
 <table mat-table [dataSource]="sites$" class="mat-elevation-z8">

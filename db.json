@@ -179,32 +179,7 @@
       "courseId": "1"
     },
     {
-      "id": "2f0f",
-      "courseId": "1",
-      "studentId": "1"
-    },
-    {
-      "id": "08c9",
-      "courseId": "1",
-      "studentId": "2"
-    },
-    {
-      "id": "9301",
-      "courseId": "365a",
-      "studentId": "1"
-    },
-    {
-      "id": "449c",
-      "courseId": "3",
-      "studentId": "1"
-    },
-    {
-      "id": "4607",
-      "courseId": "365a",
-      "studentId": "2"
-    },
-    {
-      "id": "7294",
+      "id": "f37d",
       "courseId": "3",
       "studentId": "3"
     }
@@ -281,6 +256,14 @@
       "altura": 333,
       "codigoPostal": "a33",
       "aulas": "33"
+    },
+    {
+      "id": "2225",
+      "nombre": "dfsasfsd",
+      "calle": "asasdfsadf",
+      "altura": "ddd",
+      "codigoPostal": "3",
+      "aulas": 3
     }
   ]
 }

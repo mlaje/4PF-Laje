@@ -4,8 +4,8 @@ import { InscriptionsComponent } from './inscriptions.component';
 
 const routes: Routes = [
  {
-  path: '',
-  component: InscriptionsComponent,
+    path: '',
+    component: InscriptionsComponent,
  }
 
 ];

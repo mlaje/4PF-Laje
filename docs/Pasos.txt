@@ -731,26 +731,31 @@ CUARTA entrega
 Feature Store
 - ng add @ngrx/schematics
 
-- Definir las inscripciones (generar modulo y componente)
+- Definir las inscriptions (generar modulo y componente)
 
-    - ng g m layouts/dashboard/pages/inscripciones --routing
-    - ng g c layouts/dashboard/pages/inscripciones --skip-tests
+    - ng g m layouts/dashboard/pages/inscriptions --routing
+    - ng g c layouts/dashboard/pages/inscriptions --skip-tests
 
-- Editar inscripciones-routing.module y el app.routing.module
+- Editar inscriptions-routing.module y el app.routing.module
 
-- Agregar menú de inscripciones
+- Agregar menú de inscriptions
 
-- ng g feature layouts/dashboard/pages/inscripciones/store/inscripciones --skip-tests
+- ng g feature layouts/dashboard/pages/inscriptions/store/inscriptions --skip-tests
 ? Should we generate and wire success and failure actions? Yes
 ? What should be the prefix of the action, effect and reducer? load
 ? Should we use @ngrx/entity to create the reducer? No
-? To which module (path) should the effect be registered in? layouts/dashboard/pages/inscripciones/inscripciones.module.ts
+? To which module (path) should the effect be registered in? layouts/dashboard/pages/inscriptions/inscriptions.module.ts
 
 - ng add @ngrx/effects@latest
 
-- Agregar en el imports de inscripciones.module.ts
-    StoreModule.forFeature(inscripcionesFeature),
+- Agregar en el imports de inscriptions.module.ts
+    StoreModule.forFeature(inscriptionsFeature),
 
-- Generamos en el db.json inscripciones (   "id": ..,
+- Generamos en el db.json inscriptions (   "id": ..,
       "studentId": ..,
       "courseId": ..)
+
+- Crear servicio de inscripciones
+    ng generate service core/services/inscriptions --skip-tests
+
+- editar verifyToken    

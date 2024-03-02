@@ -17,7 +17,8 @@ import { InscriptionDialogComponent } from './components/inscription-dialog/insc
 export class InscriptionsComponent {
   inscriptions$: Observable<Inscription[]>; 
   isLoading$: Observable<boolean>;
-
+  displayedColumns: string[] = ['id', 'courseName', 'profesor', 'studentName', 'edad', 'email', 'phone']; 
+  
   constructor (
               //private inscriptionsService: InscriptionsService, 
                private store: Store,

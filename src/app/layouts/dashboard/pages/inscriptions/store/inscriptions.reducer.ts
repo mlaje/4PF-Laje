@@ -28,7 +28,8 @@ export const reducer = createReducer(
   initialState,
   on(InscriptionsActions.loadInscriptions, (state) => ({ 
                                                         ...state, 
-                                                        loading: true })),
+                                                        loading: true 
+  })),
   on(InscriptionsActions.loadInscriptionsSuccess, (state, action) => ({
                                                         ...state,
                                                         loading: false,
@@ -51,7 +52,7 @@ export const reducer = createReducer(
   on(InscriptionsActions.loadCoursesSuccess, (state, action) =>  ({ 
                                                         ...state,
                                                         courses: action.data 
-})),
+  })),
 );
 
 export const inscriptionsFeature = createFeature({

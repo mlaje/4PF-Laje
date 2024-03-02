@@ -5,7 +5,7 @@
       <mat-label>Estudiante</mat-label>
       <mat-select formControlName="studentId">
         <mat-option [value]="student.id" *ngFor="let student of students$ | async">
-          {{ student.firstName }} {{ student.lastName }}
+          {{ student.firstName }} {{ student.lastName }} 
         </mat-option>
       </mat-select>
     </mat-form-field>

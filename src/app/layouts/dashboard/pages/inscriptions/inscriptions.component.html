@@ -1,3 +1,5 @@
+<h1> Inscripciones </h1>
+
 <div *ngIf="isLoading$ | async; else notLoading">
     Cargando
 </div>
@@ -6,5 +8,81 @@
     <button (click)="createInscription()" mat-flat-button type="button" color="primary">
         Inscribir
     </button>
-    <pre> {{ inscriptions$ | async | json }} </pre>
 </ng-template>
+
+
+<table mat-table [dataSource]="inscriptions$" class="mat-elevation-z8">
+
+    <!-- Id Inscripción  -->
+    <ng-container matColumnDef="id">
+        <!-- HEADER -->  
+        <th mat-header-cell *matHeaderCellDef appSize> Id </th>                         <!-- appSize: directiva personalizada-->
+        <!-- CELDA -->  
+        <td mat-cell *matCellDef="let inscription"> {{ inscription.id }} </td>
+    </ng-container>
+
+    <!-- Course Column -->
+    <ng-container matColumnDef="courseName">
+        <!-- HEADER -->  
+        <th mat-header-cell *matHeaderCellDef appSize>  Curso </th>                     <!-- appSize: directiva personalizada-->
+        <!-- CELDA -->  
+        <td mat-cell *matCellDef="let inscription"> 
+            {{ inscription.course.nombre }} 
+        </td>
+    </ng-container>
+
+    <!-- Profesor Column -->
+    <ng-container matColumnDef="profesor">
+        <!-- HEADER -->  
+        <th mat-header-cell *matHeaderCellDef appSize>  Profesor </th>                  <!-- appSize: directiva personalizada-->
+        <!-- CELDA -->  
+        <td mat-cell *matCellDef="let inscription"> 
+            {{ inscription.course.profesor }} 
+        </td>
+    </ng-container>
+
+    <!-- Student Column -->
+    <ng-container matColumnDef="studentName">
+        <!-- HEADER -->  
+        <th mat-header-cell *matHeaderCellDef appSize> Estudiante</th>                  <!-- appSize: directiva personalizada-->
+        <!-- CELDA -->  
+        <td mat-cell *matCellDef="let inscription"> 
+            {{ {firstName: inscription.student.firstName, lastName: inscription.student.lastName} | fullName }}  
+        </td>
+    </ng-container>
+    
+    <!-- Student Age -->
+    <ng-container matColumnDef="edad">
+        <!-- HEADER -->  
+        <th mat-header-cell *matHeaderCellDef appSize> Edad</th>                        <!-- appSize: directiva personalizada-->
+        <!-- CELDA -->  
+        <td mat-cell *matCellDef="let inscription"> 
+            {{ inscription.student.birthDate | edad }}                                  <!-- uso Pipe Edad-->   
+        </td>
+    </ng-container>
+
+    <!-- Student Email -->
+    <ng-container matColumnDef="email">
+        <!-- HEADER -->  
+        <th mat-header-cell *matHeaderCellDef appSize> Email</th>                       <!-- appSize: directiva personalizada-->
+        <!-- CELDA -->  
+        <td mat-cell *matCellDef="let inscription"> 
+            {{ inscription.student.email }} 
+        </td>
+    </ng-container>
+
+    <!-- Student Phone -->
+    <ng-container matColumnDef="phone">
+        <!-- HEADER -->  
+        <th mat-header-cell *matHeaderCellDef appSize> Teléfono</th>                     <!-- appSize: directiva personalizada-->
+        <!-- CELDA -->  
+        <td mat-cell *matCellDef="let inscription"> 
+            {{ inscription.student.phone }} 
+        </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+

@@ -43,7 +43,16 @@
         [activated]="inscriptionsLink.isActive"
         routerLink="inscriptions"
         mat-list-item
-        >Inscriptions</a>
+        >Inscripciones</a>
+
+        <a
+        #sitesLink="routerLinkActive"
+        routerLinkActive
+        [activated]="sitesLink.isActive"
+        routerLink="sites"
+        mat-list-item
+        >Sedes</a>
+
         <a  (click)="logout()" mat-list-item>Cerrar sesión</a>
       </mat-nav-list>
       @if (showFiller) {

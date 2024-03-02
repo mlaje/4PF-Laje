@@ -1,0 +1,93 @@
+
+<h1> Sedes </h1>
+
+<div *ngIf="isLoading$ | async; else notLoading">
+    Cargando
+</div>
+
+<ng-template #notLoading>
+    <button (click)="createSite()" mat-flat-button type="button" color="primary">
+        Agregar
+    </button>
+</ng-template>
+
+<table mat-table [dataSource]="sites$" class="mat-elevation-z8">
+    
+    <!-- Id Sede  -->
+    <ng-container matColumnDef="id">
+        <!-- HEADER -->  
+        <th mat-header-cell *matHeaderCellDef appSize> Id </th>                         <!-- appSize: directiva personalizada-->
+        <!-- CELDA -->  
+        <td mat-cell *matCellDef="let site"> {{ site.id }} </td>
+    </ng-container>
+
+    
+    <!-- Nombre Column -->
+    <ng-container matColumnDef="nombre">
+        <!-- HEADER -->  
+        <th mat-header-cell *matHeaderCellDef appSize>  Nombre </th>                     <!-- appSize: directiva personalizada-->
+        <!-- CELDA -->  
+        <td mat-cell *matCellDef="let site"> 
+            {{ site.nombre }} 
+        </td>
+    </ng-container>
+
+    <!-- Street Column -->
+    <ng-container matColumnDef="calle">
+        <!-- HEADER -->  
+        <th mat-header-cell *matHeaderCellDef appSize>  Calle </th>                     <!-- appSize: directiva personalizada-->
+        <!-- CELDA -->  
+        <td mat-cell *matCellDef="let site"> 
+            {{ site.calle }} 
+        </td>
+    </ng-container>
+
+    <!-- Altura Column -->
+    <ng-container matColumnDef="altura">
+        <!-- HEADER -->  
+        <th mat-header-cell *matHeaderCellDef appSize>  Altura </th>                     <!-- appSize: directiva personalizada-->
+        <!-- CELDA -->  
+        <td mat-cell *matCellDef="let site"> 
+            {{ site.altura }} 
+        </td>
+    </ng-container>
+    
+    <!-- Codigo Postal  -->
+    <ng-container matColumnDef="codigoPostal">
+        <!-- HEADER -->  
+        <th mat-header-cell *matHeaderCellDef appSize> CodPostal</th>                     <!-- appSize: directiva personalizada-->
+        <!-- CELDA -->  
+        <td mat-cell *matCellDef="let site"> 
+            {{ site.codigoPostal }} 
+        </td>
+    </ng-container>
+
+    
+    <!-- Aulas -->
+    <ng-container matColumnDef="aulas">
+        <!-- HEADER -->  
+        <th mat-header-cell *matHeaderCellDef appSize> Aulas</th>                     <!-- appSize: directiva personalizada-->
+        <!-- CELDA -->  
+        <td mat-cell *matCellDef="let site"> 
+            {{ site.aulas }} 
+        </td>
+    </ng-container>
+
+    <!--
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef appSize> Acciones </th>
+        <td mat-cell *matCellDef="let inscription"> 
+            <button (click) = "onDeleteInscription(inscription)" mat-icon-button color="warn"> 
+                <mat-icon> delete </mat-icon>
+            </button> 
+            <button (click) ="onEdit(inscription)" color="primary" mat-icon-button>
+                <mat-icon>edit</mat-icon>
+            </button> 
+        </td>
+      </ng-container>
+    -->
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+

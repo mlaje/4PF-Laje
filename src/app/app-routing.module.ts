@@ -51,6 +51,14 @@ const routes: Routes = [
                             (m) => m.InscriptionsModule)   // LAZY LOADING
         //component: InscriptionsComponent   
       },
+      { 
+        // /dashboard/sites
+        path: 'sites',
+        loadChildren: () => 
+                      import('./layouts/dashboard/pages/sites/sites.module').then(
+                            (m) => m.SitesModule)   // LAZY LOADING
+        //component: SitesComponent   
+      },
       
       { 
         path: '**',

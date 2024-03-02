@@ -764,3 +764,45 @@ Feature Store
 
 - crear un dialog para la creación de las inscripciones
     ng g c layouts/dashboard/pages/inscriptions/components/inscription-dialog
+
+
+
+- Uso Patron Redux para Sedes (Fisicas) donde dictar cursos
+
+
+
+- Definir las Sedes (generar modulo y componente)
+
+    - ng g m layouts/dashboard/pages/sites --routing
+    - ng g c layouts/dashboard/pages/sites --skip-tests
+
+- Editar sites-routing.module y el app.routing.module
+
+- Agregar menú de Sedes
+
+- ng g feature layouts/dashboard/pages/sites/store/sites --skip-tests
+? Should we generate and wire success and failure actions? Yes
+? What should be the prefix of the action, effect and reducer? load
+? Should we use @ngrx/entity to create the reducer? No
+? To which module (path) should the effect be registered in? layouts/dashboard/pages/sites/sites.module.ts
+
+- Agregar en el imports de sites.module.ts
+    StoreModule.forFeature(sitesFeature),
+
+- Generamos en el db.json inscriptions
+      "id",
+      "nombre" 
+      "calle"
+      "altura":
+      "codigoPostal"
+      "aulas"	
+
+- generamos modelo y clase Site.ts
+
+- Crear servicio de sites
+    ng generate service core/services/sites --skip-tests
+
+- Editar efectos, selectores, acciones, reducers, servicio y demas referido a inscriptions
+
+- crear un dialog para la creación de los sites
+    ng g c layouts/dashboard/pages/sites/components/sites-dialog

@@ -35,4 +35,13 @@ export class InscriptionsComponent {
     this.matDialog.open(InscriptionDialogComponent)
   }
 
+  /*
+  onDeleteInscription(ins: Inscription): void {
+    if(confirm('Está seguro que desea borrar la Inscripción?')) {
+      this.store.dispatch(InscriptionsActions.deleteInscription({ data: this.inscriptionForm.value }));
+    }
+  }
+  */
+
+
 }

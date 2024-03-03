@@ -39,59 +39,6 @@ const companyIndustries: string[] = ['Agencia de Publicidad', 'Agricultura', 'Al
 // Puesto Laboral
 const jobDescriptions: string[] = ['Analista', 'Asistente', 'Asociado', 'Coordinador', 'Director', 'Director Ejecutivo (CEO)', 'Empleado de Nivel Básico', 'Especialista', 'Gerente', 'Jefe de Equipo', 'Presidente', 'Socio', 'Supervisor'];
 
-/*
-let STUDENTS_DB: Student[] = [
-{
-  id: new Date().getTime()+1,
-  firstName: 'Marcelo',
-  lastName: 'Laje',
-  dni: 222222222,
-  birthDate:  new Date(1973, 2, 18),
-  email: 'cualquier.mail@gmail.com',
-  phone: '54 911 3683-5510',
-  gender: 'Masculino',
-  address: 'Bragado 4111',
-  residenceCountry: 'Argentina',
-  bornCountry: 'Argentina',
-  works: true,
-  companyIndustry: 'Desarrollo Web',
-  jobDescription: 'Analista'
-},  
-{
-  id: new Date().getTime()+2,
-  firstName: 'Valentina',
-  lastName: 'Laje',
-  dni: 44444444,
-  birthDate:  new Date(2013, 6, 27),
-  email: 'otro.mail@gmail.com',
-  phone: '54 911 3683-5510',
-  gender: 'Femenino',
-  address: 'Bragado 4999',
-  residenceCountry: 'Argentina',
-  bornCountry: 'Argentina',
-  works: false,
-  companyIndustry: '',
-  jobDescription: ''
-} , 
-{
-  id: new Date().getTime()+3,
-  firstName: 'Liliana',
-  lastName: 'Ibarra',
-  dni: 933333333,
-  birthDate:  new Date(1975, 6, 20),
-  email: 'lili.mail@gmail.com',
-  phone: '54 911 3683-5510',
-  gender: 'Femenino',
-  address: 'Bragado 4666',
-  residenceCountry: 'Argentina',
-  bornCountry: 'Paraguay',
-  works: true,
-  companyIndustry: 'Textil',
-  jobDescription: 'Socio'
-}  
-];
-*/
-
 @Injectable({
   providedIn: 'root'
 })
@@ -102,18 +49,10 @@ export class StudentsService {
               private httpClient: HttpClient) {}
   
   getStudentById(idStudent: number | string): Observable<Student | undefined> {
-    //return of(STUDENTS_DB.find((student) => student.id == idStudent)).pipe(delay(500));
     return this.httpClient.get<Student>(`${environment.apiURL}/students/${idStudent}`);
   }
 
   getStudents() {
-    /*
-    this.loadingService.setIsLoading(true);
-    return of(STUDENTS_DB).pipe(
-      delay(1200), 
-      finalize(() => this.loadingService.setIsLoading(false)));
-    */
-
     this.loadingService.setIsLoading(true);
     return this.httpClient.get<Student[]>(`${environment.apiURL}/students`)
                           .pipe(
@@ -154,11 +93,6 @@ export class StudentsService {
   }
 
   createStudent(payload: Student) {
-    /*
-    STUDENTS_DB = [...STUDENTS_DB, {...payload, id : new Date().getTime()}]; 
-    return this.getStudents();    
-    */
-
     return this.httpClient
         .post<Student>(`${environment.apiURL}/students`, payload)
         .pipe(mergeMap(() => this.getStudents()));
@@ -166,9 +100,7 @@ export class StudentsService {
   }
 
   deleteStudentById(studentId: number) {
-    /*STUDENTS_DB = STUDENTS_DB.filter((student) => student.id != studentId);
-    return this.getStudents().pipe(tap(() => this.alerts.showSuccess('Realizado', 'Se eliminó correctamente')) );
-    */
+
     return this.httpClient
           .delete<Student>(`${environment.apiURL}/students/${studentId}`)
           .pipe(tap(() => this.alerts.showSuccess('Realizado', 'Se eliminó correctamente')))
@@ -176,10 +108,7 @@ export class StudentsService {
   }
 	
   updateStudentById(studentId: number, data: Student) {
-    /*
-    STUDENTS_DB = STUDENTS_DB.map((c) => c.id === studentId ? { ...c, ...data} : c); 
-    return this.getStudents();
-    */
+
     return this.httpClient
     .patch<Student>(`${environment.apiURL}/students/${studentId}`,data)
     .pipe(

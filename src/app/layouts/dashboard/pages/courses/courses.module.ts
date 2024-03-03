@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CoursesComponent } from './courses.component';
 import { CourseFormComponent } from './components/course-form/course-form.component';
-//import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field'; // input wrapper
 import { MatInputModule } from '@angular/material/input'; // input
 import { MatSelectModule } from '@angular/material/select'; // select

@@ -10,7 +10,6 @@ import { AlertsService } from './alerts.service';
 })
 export class SitesService {
 
-
   constructor(private http: HttpClient,
     private alerts: AlertsService) {}
 

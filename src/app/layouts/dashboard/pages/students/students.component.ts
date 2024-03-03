@@ -80,22 +80,7 @@ export class StudentsComponent {
       }
     });
   }
-/*
-	onStudentSubmitted(ev: Student): void {
-    
-    this.loadingService.setIsLoading(true);
-    this.studentsService
-      .createStudent({...ev, id: new Date().getTime()})
-      .subscribe({							
-        next: (students) => {
-          this.dataSource = [...students ]; 
-      },
-      complete: () => {
-        this.loadingService.setIsLoading(false);
-      },
-    });
-  }
-*/
+
   @Output() 
   userSubmitted = new EventEmitter();
 

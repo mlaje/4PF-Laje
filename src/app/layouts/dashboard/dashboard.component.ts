@@ -30,10 +30,7 @@ export class DashboardComponent {
 
     }
   logout(): void {
-    // /dashboard/users
-    //this.router.navigate(['users'], {relativeTo: this.route} );
-    //localStorage.removeItem('access-token');
-    //this.router.navigate(['auth','login'] );
+
     this.authService.logout();
   }
 }

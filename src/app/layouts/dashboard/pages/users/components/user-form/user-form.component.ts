@@ -62,16 +62,6 @@ export class UserFormComponent implements OnInit {
   @Output() 
   userSubmitted = new EventEmitter();
 
-  /*
-  onSubmit(): void {
-    if (this.userForm.invalid) {
-      this.userForm.markAllAsTouched();
-    } else {
-        this.userSubmitted.emit(this.userForm.value);
-        this.userForm.reset();        
-    }
-  }
-  */
   onSave(): void {
     this.dialogRef.close(this.userForm.value);    
   }

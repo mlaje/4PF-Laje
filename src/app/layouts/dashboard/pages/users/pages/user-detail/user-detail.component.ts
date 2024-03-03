@@ -24,7 +24,4 @@ export class UserDetailComponent {
       });
   }
 
-  // 
-  // @Input() registro: any;
-
 }

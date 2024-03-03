@@ -14,17 +14,6 @@ interface LoginData {
   password: null | string;
 }
 
-/*
-const MOCK_USER = {
-  id: 2323,
-  userName: 'kimo', 
-  firstName: 'Satoshi',
-  lastName: 'Nakamoto',
-  email: 'satoshi@gmail.com',
-  password: 'bitcoin',
-  role: 'USER',
-};
-*/
 @Injectable({
   providedIn: 'root'
 })
@@ -55,19 +44,7 @@ export class AuthService {
                       })
                     );
   }                    
-  /*
-    login(data: LoginData) : void {
-        if (data.email    === MOCK_USER.email && 
-            data.password === MOCK_USER.password) {
-              this.setAuthUser(MOCK_USER);
-              localStorage.setItem('token', 'token123');        // TOKEN siempre igual
-              this.router.navigate(['dashboard']);
-        } else {
-              this.alertsService.showError('Email o password inválidos');
-        }
-    };   
-  */
-
+  
   logout(): void {
     //this.authUser = null;
     this.store.dispatch(AuthActions.logout());
@@ -94,15 +71,6 @@ export class AuthService {
                                 catchError(() => of(false))
     );
   }
-  /*    this.loadingService.setIsLoading(true);
-      return of(localStorage.getItem('token'))
-            .pipe(delay(1000), 
-                  map((response) => !!response ), 
-                  tap(()         => this.setAuthUser(MOCK_USER)),
-                  finalize(()    => this.loadingService.setIsLoading(false)));           
-    }
-  */
-
 
   private setAuthUser(user: User): void {
     //this.authUser = user;

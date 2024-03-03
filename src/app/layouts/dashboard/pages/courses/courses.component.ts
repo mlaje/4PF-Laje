@@ -95,20 +95,5 @@ onDeleteCourse(ev: Course): void {
   }
 }
 
-/*
-onCourseSubmitted(ev: Course): void {
-  
-  this.loadingService.setIsLoading(true);
-  this.coursesService
-    .createCourse({...ev, id: new Date().getTime()})
-    .subscribe({							
-      next: (courses) => {
-        this.dataSource = [...courses ]; 
-    },
-    complete: () => {
-      this.loadingService.setIsLoading(false);
-    },
-  });
-}
-*/
+
 }

@@ -85,16 +85,6 @@ export class StudentFormComponent implements OnInit {
   }
 
 
-  /*
-  onSubmit(): void {
-    if (this.studentForm.invalid) {
-      this.studentForm.markAllAsTouched();
-    } else {
-        this.userSubmitted.emit(this.studentForm.value);
-        this.studentForm.reset();        
-    }
-  }
-  */
   onSave(): void {
     this.dialogRef.close(this.studentForm.value);    
   }

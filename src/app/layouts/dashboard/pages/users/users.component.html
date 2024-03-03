@@ -68,9 +68,7 @@
       <th mat-header-cell *matHeaderCellDef appSize> Acciones </th>
       <!-- CELDA -->  
       <td mat-cell *matCellDef="let user"> 
-          <!-- <button [routerLink]="course.id" color="accent" mat-icon-button>
-              <mat-icon>visibility</mat-icon>
-          </button>  -->      
+          
           <button (click) = "onDeleteUser(user)" mat-icon-button color="warn"> 
               <mat-icon> delete </mat-icon>
           </button> 

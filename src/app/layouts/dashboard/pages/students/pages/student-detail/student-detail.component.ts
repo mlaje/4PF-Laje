@@ -16,8 +16,7 @@ export class StudentDetailComponent {
   this.loadingService.setIsLoading(true);          
   this.studentService.getStudentById(this.route.snapshot.params['idStudent']).subscribe ({
     next:  (findedStudent) => { 
-      //console.log('falta implementar details de ' + findedStudent)
-      //console.log(findedStudent);
+
     },
    complete: () => {
       this.loadingService.setIsLoading(false); 

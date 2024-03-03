@@ -6,6 +6,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { SitesDialogComponent } from './components/sites-dialog/sites-dialog.component';
 import { SitesActions } from './store/sites.actions';
 import { selectSites, selectSitesIsLoading } from './store/sites.selectors';
+import { User } from '../users/models/user';
+import { selectAuthUser } from '../../../../core/store/auth/selectors';
 
 @Component({
   selector: 'app-sites',
@@ -16,14 +18,16 @@ export class SitesComponent {
   
   sites$: Observable<Site[]>; 
   isLoading$: Observable<boolean>;
-  displayedColumns: string[] = ['id', 'nombre', 'calle', 'altura', 'codigoPostal', 'aulas']; 
-
+  displayedColumns: string[] = ['id', 'nombre', 'calle', 'altura', 'codigoPostal', 'aulas', 'actions']; 
+  authUser$: Observable<User | null>;
+  
   constructor (private store: Store,
                private matDialog: MatDialog) {
 
       this.sites$ = this.store.select(selectSites);
       this.isLoading$ = this.store.select(selectSitesIsLoading)
       this.store.dispatch(SitesActions.loadSites());
+      this.authUser$ = this.store.select(selectAuthUser); 
   }
 
   createSite(): void {
@@ -31,5 +35,10 @@ export class SitesComponent {
   }
 
 
+  onDeleteSite(site: Site): void {
+    this.store.dispatch(SitesActions.deleteSite({ siteId: site.id }));
+  }
 
+
+  
 }

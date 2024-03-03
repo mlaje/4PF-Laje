@@ -9,6 +9,9 @@ export const SitesActions = createActionGroup({
     'Load Sites Failure': props<{ error: unknown }>(),
     'Create Site': props<{ data: CreateSiteData }>(),
     'Create Site Success': props<{ data: Site }>(),
-    'Create Site Failure': props<{ error: unknown }>(),  
+    'Create Site Failure': props<{ error: unknown }>(),
+    'Delete Site': props<{ siteId: number }>(),
+    'Delete Site Success': props<{ siteId: number }>(),
+    'Delete Site Failure': props<{ error: unknown }>(),  
   }
 });

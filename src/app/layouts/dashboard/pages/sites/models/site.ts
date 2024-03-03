@@ -1,5 +1,5 @@
 export interface Site {
-  id: string | number;
+  id:  number;
   nombre: string;
   calle: string;
   altura: number;

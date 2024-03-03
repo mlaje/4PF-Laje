@@ -32,6 +32,11 @@ export const reducer = createReducer(
                                                 loading: false,
                                                 error: action.error,
   })),
+  
+  on(SitesActions.deleteSite, (state, { siteId }) => ({
+                                                ...state,
+                                                sites: state.sites.filter((site) => site.id !== siteId),
+  }))
 );
 
 export const sitesFeature = createFeature({

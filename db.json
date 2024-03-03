@@ -177,11 +177,21 @@
       "id": "4",
       "studentId": "2",
       "courseId": "1"
-    },   
+    },
     {
       "id": "a534",
       "courseId": "2",
       "studentId": "3"
+    },
+    {
+      "id": "c7e5",
+      "courseId": "365a",
+      "studentId": "1"
+    },
+    {
+      "id": "f67d",
+      "courseId": "3",
+      "studentId": "2"
     }
   ],
   "sites": [
@@ -240,46 +250,6 @@
       "altura": "12000",
       "codigoPostal": "1414",
       "aulas": "14"
-    },
-    {
-      "id": "e27d",
-      "nombre": "Lugano",
-      "calle": "Escalada",
-      "altura": 1200,
-      "codigoPostal": "1425",
-      "aulas": "22"
-    },
-    {
-      "id": "6281",
-      "nombre": "fasfsfdsd",
-      "calle": "asdfasdf",
-      "altura": 333,
-      "codigoPostal": "a33",
-      "aulas": "33"
-    },
-    {
-      "id": "2225",
-      "nombre": "dfsasfsd",
-      "calle": "asasdfsadf",
-      "altura": "ddd",
-      "codigoPostal": "3",
-      "aulas": 3
-    },
-    {
-      "id": "ea5f",
-      "nombre": "aaa",
-      "calle": "dsfdsafasdf",
-      "altura": "333",
-      "codigoPostal": "333",
-      "aulas": 333
-    },
-    {
-      "id": "84f0",
-      "nombre": "asasf",
-      "calle": "3sdaasdfe",
-      "altura": "33",
-      "codigoPostal": "333",
-      "aulas": 33
     }
   ]
 }

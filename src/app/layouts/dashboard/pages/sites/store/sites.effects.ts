@@ -43,6 +43,29 @@ export class SitesEffects {
     );
   });
 
+
+
+  deleteSite$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(SitesActions.deleteSite),
+      concatMap((action) => {
+        return this.sitesService.deleteSiteById( action.siteId ).pipe(
+          map((resp) => SitesActions.deleteSiteSuccess({ siteId: action.siteId })),
+          catchError((error) => of(SitesActions.createSiteFailure({ error })))
+        );
+      })
+    );
+  });
+
+  deleteSiteSuccess$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(SitesActions.deleteSiteSuccess),
+      map(() => SitesActions.loadSites())
+    );
+  });
+
+
+
   constructor(private actions$: Actions,
               private sitesService: SitesService)  { } 
 

@@ -17,7 +17,7 @@ import { InscriptionDialogComponent } from './components/inscription-dialog/insc
 export class InscriptionsComponent {
   inscriptions$: Observable<Inscription[]>; 
   isLoading$: Observable<boolean>;
-  displayedColumns: string[] = ['id', 'courseName', 'profesor', 'studentName', 'edad', 'email', 'phone']; 
+  displayedColumns: string[] = ['id', 'courseName', 'profesor', 'studentName', 'edad', 'email', 'phone', 'actions']; 
   
   constructor (
               //private inscriptionsService: InscriptionsService, 
@@ -34,14 +34,10 @@ export class InscriptionsComponent {
   createInscription(): void {
     this.matDialog.open(InscriptionDialogComponent)
   }
-
-  /*
+ 
   onDeleteInscription(ins: Inscription): void {
-    if(confirm('Está seguro que desea borrar la Inscripción?')) {
-      this.store.dispatch(InscriptionsActions.deleteInscription({ data: this.inscriptionForm.value }));
-    }
+    this.store.dispatch(InscriptionsActions.deleteInscription({ inscriptionId: ins.id }));
   }
-  */
 
 
 }

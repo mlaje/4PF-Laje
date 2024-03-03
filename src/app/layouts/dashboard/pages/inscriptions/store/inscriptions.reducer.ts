@@ -53,6 +53,11 @@ export const reducer = createReducer(
                                                         ...state,
                                                         courses: action.data 
   })),
+
+  on(InscriptionsActions.deleteInscription, (state, { inscriptionId }) => ({
+                                                      ...state,
+                                                      inscriptions: state.inscriptions.filter((inscription) => inscription.id !== inscriptionId),
+  }))
 );
 
 export const inscriptionsFeature = createFeature({

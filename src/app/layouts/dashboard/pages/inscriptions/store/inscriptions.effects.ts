@@ -15,7 +15,6 @@ export class InscriptionsEffects {
     return this.actions$.pipe(
       ofType(InscriptionsActions.loadInscriptions),  // filtra acciones loadInscriptions únicamente
       concatMap(() =>
-        /** observable API request (consulta al servicio por http) */
         this.inscriptionsService.getInscriptions().pipe(
           // ok (si la respuesta de la base es ok, transformamos "data" en una nueva accion)
           map(data => InscriptionsActions.loadInscriptionsSuccess({ data })),
@@ -66,6 +65,25 @@ export class InscriptionsEffects {
   createInscriptionSuccess$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(InscriptionsActions.createInscriptionSuccess),
+      map(() => InscriptionsActions.loadInscriptions())
+    );
+  });
+
+  deleteInscription$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(InscriptionsActions.deleteInscription),
+      concatMap((action) => {
+        return this.inscriptionsService.deleteInscriptionById( action.inscriptionId ).pipe(
+          map((resp) => InscriptionsActions.deleteInscriptionSuccess({ inscriptionId: action.inscriptionId })),
+          catchError((error) => of(InscriptionsActions.createInscriptionFailure({ error })))
+        );
+      })
+    );
+  });
+
+  deleteInscriptionSuccess$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(InscriptionsActions.deleteInscriptionSuccess),
       map(() => InscriptionsActions.loadInscriptions())
     );
   });

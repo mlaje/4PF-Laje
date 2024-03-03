@@ -18,5 +18,8 @@ export const InscriptionsActions = createActionGroup({
     'Create Inscription': props<{ data: CreateInscriptionData }>(),
     'Create Inscription Success': props<{ data: Inscription }>(),
     'Create Inscription Failure': props<{ error: unknown }>(),
+    'Delete Inscription': props<{ inscriptionId: number }>(),
+    'Delete Inscription Success': props<{ inscriptionId: number }>(),
+    'Delete Inscription Failure': props<{ error: unknown }>(),
   }
 });

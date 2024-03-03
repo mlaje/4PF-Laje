@@ -3,14 +3,16 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { CreateInscriptionData, Inscription } from '../../layouts/dashboard/pages/inscriptions/models/inscription';
 //import { Student } from '../../layouts/dashboard/pages/students/models';
-import { catchError, concatMap, throwError } from 'rxjs';
+import { catchError, concatMap, mergeMap, tap, throwError } from 'rxjs';
+import { AlertsService } from './alerts.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InscriptionsService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,
+    private alerts: AlertsService) {}
 
     getInscriptions() {
       return this.http.get<Inscription[]>(
@@ -34,4 +36,28 @@ export class InscriptionsService {
     createInscription(data: CreateInscriptionData) {
       return this.http.post<Inscription>(`${environment.apiURL}/inscriptions`, data);
     }
+  /*  
+    deleteInscriptionById(inscriptionId: number) {
+  
+      return this.http
+            .delete<Inscription>(`${environment.apiURL}/inscriptions/${inscriptionId}`)
+            .pipe(tap(() => this.alerts.showSuccess('Realizado', 'Se eliminó correctamente')) )
+            .pipe(mergeMap(() => this.getInscriptions()))        
+            
+    }
+*/
+
+    deleteInscriptionById(inscriptionId: number) {
+      return this.http
+        .delete<Inscription>(`${environment.apiURL}/inscriptions/${inscriptionId}`)
+        .pipe(
+          tap(() => this.alerts.showSuccess('Realizado', 'Se eliminó correctamente')),
+          mergeMap(() => this.getInscriptions()),
+          catchError((error) => {
+            // Aquí puedes manejar errores específicos de la eliminación, si es necesario
+            return throwError(error);
+          })
+        );
+    }      
+
 } 

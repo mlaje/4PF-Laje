@@ -61,8 +61,40 @@
       "detalles": "detalles",
       "rangoDeFechas": "02/08 al 11/09",
       "dias": "Lu y Mi",
-      "horario": "200 hs - 22 hs",
+      "horario": "20 hs - 22 hs",
       "profesor": "Claudio"
+    },
+    {
+      "id": "7464",
+      "nombre": "Programación Backend",
+      "carrera": "Programación y Desarrollo",
+      "categoria": "Programación y Desarrollo",
+      "nivel": "Intermedio",
+      "dedicacion": "Moderada",
+      "precioDeLista": 88000,
+      "descuento": 10,
+      "precioFinal": 80000,
+      "detalles": "Se requieren conocimientos de programación",
+      "rangoDeFechas": "11/05 al 23/06",
+      "dias": "Lu y Vi",
+      "horario": "19 a 23 hs",
+      "profesor": "Bill Gates"
+    },
+    {
+      "id": "b226",
+      "nombre": "Javascript",
+      "carrera": "Programación y Desarrollo",
+      "categoria": "Diseño UX/UI",
+      "nivel": "Avanzado",
+      "dedicacion": "Alta",
+      "precioDeLista": 110000,
+      "descuento": 15,
+      "precioFinal": 95000,
+      "detalles": "Se requieren conocimientos de HTML y CSS",
+      "rangoDeFechas": "11/05 al 24/07",
+      "dias": "Ma y Ju",
+      "horario": "18 a 21 hs",
+      "profesor": "Marcela López"
     }
   ],
   "students": [
@@ -113,6 +145,38 @@
       "works": true,
       "companyIndustry": "Textil",
       "jobDescription": "Socio"
+    },
+    {
+      "id": "25d0",
+      "firstName": "Mariano",
+      "lastName": "García",
+      "dni": 11223344,
+      "birthDate": "1989-04-01T03:00:00.000Z",
+      "email": "mgarcia@gmail.com",
+      "phone": "445566778",
+      "gender": "Masculino",
+      "address": "Moreno 1500",
+      "residenceCountry": "Argentina",
+      "bornCountry": "Estados Unidos",
+      "works": true,
+      "companyIndustry": "Robótica",
+      "jobDescription": "Especialista"
+    },
+    {
+      "id": "de3c",
+      "firstName": "Lucía",
+      "lastName": "Montero",
+      "dni": 23568945,
+      "birthDate": "1999-10-02T03:00:00.000Z",
+      "email": "lucia.montero@yahoo.com.ar",
+      "phone": "6655889974",
+      "gender": "Femenino",
+      "address": "Entre Ríos 144",
+      "residenceCountry": "Países Bajos",
+      "bornCountry": "México",
+      "works": true,
+      "companyIndustry": "Arquitectura",
+      "jobDescription": "Jefe de Equipo"
     }
   ],
   "users": [
@@ -177,21 +241,6 @@
       "id": "4",
       "studentId": "2",
       "courseId": "1"
-    },
-    {
-      "id": "a534",
-      "courseId": "2",
-      "studentId": "3"
-    },
-    {
-      "id": "c7e5",
-      "courseId": "365a",
-      "studentId": "1"
-    },
-    {
-      "id": "f67d",
-      "courseId": "3",
-      "studentId": "2"
     }
   ],
   "sites": [
